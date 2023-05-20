@@ -12,6 +12,8 @@ public class Curriculum {
     
     private String nome_completo;
     
+    private String cargo_atual;
+    
     private String estado;
     
     private String pais;
