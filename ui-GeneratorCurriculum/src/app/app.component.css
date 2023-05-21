@@ -15,7 +15,13 @@
 }
 
 .links_contato {
-  border: 1px solid #017BFE;
+  border: 2px solid black;
+  border-radius: 2px;
+  padding: 10px;
+}
+
+.experiencias_profissionais {
+  border: 2px solid black;
   border-radius: 2px;
   padding: 10px;
 }

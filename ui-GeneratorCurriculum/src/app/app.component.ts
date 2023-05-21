@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Curriculum } from './model/curriculum';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +9,25 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'ui-GeneratorCurriculum';
 
-  nome!: string;
-  cargo_atual!: string;
-  estado!: string;
-  pais!: string;
-  numero_contato!: string;
-  email_contato!: string;
+  curriculum: Curriculum = {
+    nome_completo: '',
+    cargo_atual: '',
+    estado: '',
+    pais: '',
+    numero_contato: '',
+    email_contato: '',
+    links_contato: [],
+    objetivo_profissional: '',
+    experiencia_profissional: [{
+      nome_empresa: '',
+      cargo: '',
+      data_inicio: undefined,
+      data_fim: undefined,
+      descricao_cargo: ''
+    }],
+  };
+
   link!: string;
-  links_contato: string[] = [];
 
   constructor() { }
 
@@ -24,7 +36,7 @@ export class AppComponent {
   }
 
   adicionarLinksContato(link: string) {
-    this.links_contato.push(link);
+    this.curriculum.links_contato.push(link);
   }
 }
 
