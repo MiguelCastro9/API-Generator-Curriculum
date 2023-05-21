@@ -33,61 +33,60 @@ public class ExportCurriculumPdf {
             PdfWriter.getInstance(documento, saida);
             documento.open();
 
+            Font fontTitulo = new Font(Font.FontFamily.HELVETICA, 26);
+            fontTitulo.setColor(new BaseColor(0x36, 0x37, 0x44).brighter());
+
+            Font fontSubTitulo = new Font(Font.FontFamily.HELVETICA, 15);
+            fontSubTitulo.setColor(new BaseColor(0x4A, 0x86, 0xE8));
+
+            Font fontTexto = new Font(Font.FontFamily.HELVETICA, 13);
+            fontTexto.setColor(BaseColor.GRAY);
+
             LineSeparator linha = new LineSeparator();
             linha.setLineColor(new BaseColor(0x4A, 0x86, 0xE8));
             linha.setLineWidth(5);
             documento.add(new Chunk(linha));
+
             Paragraph pulaLinha = new Paragraph();
             pulaLinha.add("\n");
             documento.add(pulaLinha);
+
             // *********************** NOME COMPLETO *********************** //
             Paragraph paragrafoNomeCompleto = new Paragraph();
-            Font fontNomeCompleto = new Font(Font.FontFamily.HELVETICA, 26);
-            fontNomeCompleto.setColor(new BaseColor(0x36, 0x37, 0x44).brighter());
-            Chunk styleNomeCompleto = new Chunk(curriculum.getNome_completo(), fontNomeCompleto);
+            Chunk styleNomeCompleto = new Chunk(curriculum.getNome_completo(), fontTitulo);
             paragrafoNomeCompleto.add(styleNomeCompleto);
             documento.add(paragrafoNomeCompleto);
-            paragrafoNomeCompleto.setSpacingBefore(50f);
-            
+            documento.add(pulaLinha);
+
             // *********************** CARGO ATUAL *********************** //
             Paragraph paragrafoCargoAtual = new Paragraph();
-            Font fontCargoAtual = new Font(Font.FontFamily.HELVETICA, 15);
-            fontCargoAtual.setColor(new BaseColor(0x4A, 0x86, 0xE8));
-            Chunk styleCargoAtual = new Chunk(curriculum.getCargo_atual(), fontCargoAtual);
+            Chunk styleCargoAtual = new Chunk(curriculum.getCargo_atual(), fontSubTitulo);
             paragrafoCargoAtual.add(styleCargoAtual);
             documento.add(paragrafoCargoAtual);
             documento.add(pulaLinha);
             // *********************** ESTADO E PAIS *********************** //
             Paragraph paragrafoEstadoPais = new Paragraph();
-            Font fontEstadoPais = new Font(Font.FontFamily.HELVETICA, 13);
-            fontEstadoPais.setColor(BaseColor.GRAY);
-            Chunk styleEstadoPais = new Chunk(curriculum.getEstado() + " - " + curriculum.getPais(), fontEstadoPais);
+            Chunk styleEstadoPais = new Chunk(curriculum.getEstado() + " - " + curriculum.getPais(), fontTexto);
             paragrafoEstadoPais.add(styleEstadoPais);
             documento.add(paragrafoEstadoPais);
 
             // *********************** NÚMERO CONTATO *********************** //
             Paragraph paragrafoNumeroContato = new Paragraph();
-            Font fontNumeroContato = new Font(Font.FontFamily.HELVETICA, 13);
-            fontNumeroContato.setColor(BaseColor.GRAY);
-            Chunk styleNumeroContato = new Chunk(curriculum.getNumero_contato(), fontNumeroContato);
+            Chunk styleNumeroContato = new Chunk(curriculum.getNumero_contato(), fontTexto);
             paragrafoNumeroContato.add(styleNumeroContato);
             documento.add(paragrafoNumeroContato);
 
             // *********************** E-MAIL CONTATO *********************** //
             Paragraph paragrafoEmailContato = new Paragraph();
-            Font fontEmailContato = new Font(Font.FontFamily.HELVETICA, 13);
-            fontEmailContato.setColor(BaseColor.GRAY);
-            Chunk styleEmailContato = new Chunk(curriculum.getEmail_contato(), fontEmailContato);
+            Chunk styleEmailContato = new Chunk(curriculum.getEmail_contato(), fontTexto);
             paragrafoEmailContato.add(styleEmailContato);
             documento.add(paragrafoEmailContato);
 
             // *********************** LINKS DE CONTATO *********************** //
             Paragraph paragrafoLinksContato = new Paragraph();
-            Font fontLinksContato = new Font(Font.FontFamily.HELVETICA, 13);
-            fontLinksContato.setColor(BaseColor.GRAY);
             curriculum.getLinks_contato().stream()
                     .forEach(e -> {
-                        Chunk styleLinksContato = new Chunk(e, fontLinksContato);
+                        Chunk styleLinksContato = new Chunk(e, fontTexto);
                         paragrafoLinksContato.add(styleLinksContato);
                         paragrafoLinksContato.add("\n");
                     });
@@ -96,26 +95,20 @@ public class ExportCurriculumPdf {
 
             // *********************** OBJETIVO PROFISSIONAL *********************** //
             Paragraph paragrafoTituloObjetivoProfissional = new Paragraph();
-            Font fontparagrafoTituloObjetivoProfissional = new Font(Font.FontFamily.HELVETICA, 15);
-            fontparagrafoTituloObjetivoProfissional.setColor(new BaseColor(0x4A, 0x86, 0xE8));
-            Chunk styleparagrafoTituloObjetivoProfissional = new Chunk("OBJETIVO PROFISIONAL", fontparagrafoTituloObjetivoProfissional);
-            paragrafoTituloObjetivoProfissional.add(styleparagrafoTituloObjetivoProfissional);
+            Chunk styleParagrafoTituloObjetivoProfissional = new Chunk("OBJETIVO PROFISIONAL", fontSubTitulo);
+            paragrafoTituloObjetivoProfissional.add(styleParagrafoTituloObjetivoProfissional);
             documento.add(paragrafoTituloObjetivoProfissional);
 
             Paragraph paragrafoObjetivoProfissional = new Paragraph();
-            Font fontparagrafoObjetivoProfissional = new Font(Font.FontFamily.HELVETICA, 13);
-            fontparagrafoObjetivoProfissional.setColor(BaseColor.GRAY);
-            Chunk styleparagrafoObjetivoProfissional = new Chunk(curriculum.getObjetivo_profissional(), fontparagrafoObjetivoProfissional);
-            paragrafoObjetivoProfissional.add(styleparagrafoObjetivoProfissional);
+            Chunk styleParagrafoObjetivoProfissional = new Chunk(curriculum.getObjetivo_profissional(), fontTexto);
+            paragrafoObjetivoProfissional.add(styleParagrafoObjetivoProfissional);
             documento.add(paragrafoObjetivoProfissional);
             documento.add(pulaLinha);
 
             // *********************** EXPERIÊNCIAS PROFISSIONAIS *********************** //
             Paragraph paragrafoTituloExperienciaProfissional = new Paragraph();
-            Font fontparagrafoTituloExperienciaProfissional = new Font(Font.FontFamily.HELVETICA, 15);
-            fontparagrafoTituloExperienciaProfissional.setColor(new BaseColor(0x4A, 0x86, 0xE8));
-            Chunk styleparagrafoTituloExperienciaProfissional = new Chunk("EXPERIÊNCIAS PROFISSIONAIS", fontparagrafoTituloExperienciaProfissional);
-            paragrafoTituloExperienciaProfissional.add(styleparagrafoTituloExperienciaProfissional);
+            Chunk styleParagrafoTituloExperienciaProfissional = new Chunk("EXPERIÊNCIAS PROFISSIONAIS", fontSubTitulo);
+            paragrafoTituloExperienciaProfissional.add(styleParagrafoTituloExperienciaProfissional);
             documento.add(paragrafoTituloExperienciaProfissional);
 
             Paragraph paragrafoExperienciaProfissional = new Paragraph();
@@ -123,12 +116,6 @@ public class ExportCurriculumPdf {
             fontParagrafoExperienciaProfissionalEmpresa.setColor(BaseColor.BLACK);
             Font fontParagrafoExperienciaProfissionalCargo = new Font(Font.FontFamily.HELVETICA, 13, Font.BOLD);
             fontParagrafoExperienciaProfissionalCargo.setColor(BaseColor.GRAY);
-            Font fontParagrafoExperienciaProfissionalDataInicio = new Font(Font.FontFamily.HELVETICA, 13);
-            fontParagrafoExperienciaProfissionalDataInicio.setColor(BaseColor.GRAY);
-            Font fontParagrafoExperienciaProfissionalDataFim = new Font(Font.FontFamily.HELVETICA, 13);
-            fontParagrafoExperienciaProfissionalDataFim.setColor(BaseColor.GRAY);
-            Font fontParagrafoExperienciaProfissionalDescricao = new Font(Font.FontFamily.HELVETICA, 13);
-            fontParagrafoExperienciaProfissionalDescricao.setColor(BaseColor.GRAY);
             SimpleDateFormat dateFormatExperienciaProfissional = new SimpleDateFormat("MMM/yyyy");
             curriculum.getExperiencias_profissionais().stream()
                     .forEach(e -> {
@@ -136,7 +123,7 @@ public class ExportCurriculumPdf {
                         String dataInicioFormatada = dateFormatExperienciaProfissional.format(e.getData_inicio());
                         String dataFimFormatada = dateFormatExperienciaProfissional.format(e.getData_fim());
                         Chunk styleParagrafoExperienciaProfissionalCargoDataInicioFim = new Chunk(e.getCargo() + " " + dataInicioFormatada + " - " + dataFimFormatada, fontParagrafoExperienciaProfissionalCargo);
-                        Chunk styleParagrafoExperienciaProfissionalDescricao = new Chunk(e.getDescricao_cargo(), fontParagrafoExperienciaProfissionalDescricao);
+                        Chunk styleParagrafoExperienciaProfissionalDescricao = new Chunk(e.getDescricao_cargo(), fontTexto);
                         paragrafoExperienciaProfissional.add(styleParagrafoExperienciaProfissionalEmpresa);
                         paragrafoExperienciaProfissional.add("\n");
                         paragrafoExperienciaProfissional.add(styleParagrafoExperienciaProfissionalCargoDataInicioFim);
@@ -149,18 +136,14 @@ public class ExportCurriculumPdf {
 
             // *********************** CONHECIMENTOS E EXPERIÊNCIAS *********************** //
             Paragraph paragrafoTituloConhecimentoExperiencia = new Paragraph();
-            Font fontparagrafoTituloConhecimentoExperiencia = new Font(Font.FontFamily.HELVETICA, 15);
-            fontparagrafoTituloConhecimentoExperiencia.setColor(new BaseColor(0x4A, 0x86, 0xE8));
-            Chunk styleparagrafoTituloConhecimentoExperiencia = new Chunk("CONHECIMENTOS E EXPERIÊNCIAS", fontparagrafoTituloConhecimentoExperiencia);
-            paragrafoTituloConhecimentoExperiencia.add(styleparagrafoTituloConhecimentoExperiencia);
+            Chunk styleParagrafoTituloConhecimentoExperiencia = new Chunk("CONHECIMENTOS E EXPERIÊNCIAS", fontSubTitulo);
+            paragrafoTituloConhecimentoExperiencia.add(styleParagrafoTituloConhecimentoExperiencia);
             documento.add(paragrafoTituloConhecimentoExperiencia);
 
             Paragraph paragrafoConhecimentoExperiencia = new Paragraph();
-            Font fontConhecimentoExperiencia = new Font(Font.FontFamily.HELVETICA, 13);
-            fontConhecimentoExperiencia.setColor(BaseColor.GRAY);
             curriculum.getConhecimentos().stream()
                     .forEach(e -> {
-                        Chunk styleConhecimentoExperiencia = new Chunk("• " + e, fontConhecimentoExperiencia);
+                        Chunk styleConhecimentoExperiencia = new Chunk("• " + e, fontTexto);
                         paragrafoConhecimentoExperiencia.add(styleConhecimentoExperiencia);
                         paragrafoConhecimentoExperiencia.add("\n");
                     });
@@ -169,28 +152,18 @@ public class ExportCurriculumPdf {
 
             // *********************** FORMAÇÃO ACADÊMICA *********************** //
             Paragraph paragrafoTituloFormacaoAcademica = new Paragraph();
-            Font fontparagrafoTituloFormacaoAcademica = new Font(Font.FontFamily.HELVETICA, 15);
-            fontparagrafoTituloFormacaoAcademica.setColor(new BaseColor(0x4A, 0x86, 0xE8));
-            Chunk styleparagrafoTituloFormacaoAcademica = new Chunk("FORMAÇÕES ACADÊMICAS", fontparagrafoTituloFormacaoAcademica);
-            paragrafoTituloFormacaoAcademica.add(styleparagrafoTituloFormacaoAcademica);
+            Chunk styleParagrafoTituloFormacaoAcademica = new Chunk("FORMAÇÕES ACADÊMICAS", fontSubTitulo);
+            paragrafoTituloFormacaoAcademica.add(styleParagrafoTituloFormacaoAcademica);
             documento.add(paragrafoTituloFormacaoAcademica);
 
             Paragraph paragrafoFormacaoAcademica = new Paragraph();
-            Font fontParagrafoFormacaoAcademicaCurso = new Font(Font.FontFamily.HELVETICA, 13);
-            fontParagrafoFormacaoAcademicaCurso.setColor(BaseColor.GRAY);
-            Font fontParagrafoFormacaoAcademicaDataInicio = new Font(Font.FontFamily.HELVETICA, 13, Font.BOLD);
-            fontParagrafoFormacaoAcademicaDataInicio.setColor(BaseColor.GRAY);
-            Font fontParagrafoFormacaoAcademicaDataFim = new Font(Font.FontFamily.HELVETICA, 13);
-            fontParagrafoFormacaoAcademicaDataFim.setColor(BaseColor.GRAY);
-            Font fontParagrafoFormacaoAcademicaInstituicao = new Font(Font.FontFamily.HELVETICA, 13);
-            fontParagrafoFormacaoAcademicaInstituicao.setColor(BaseColor.GRAY);
             SimpleDateFormat dateFormatFormcacaoAcademica = new SimpleDateFormat("yyyy");
             curriculum.getFormacoes_academicas().stream()
                     .forEach(e -> {
                         String dataInicioFormatada = dateFormatFormcacaoAcademica.format(e.getData_inicio());
                         String dataFimFormatada = dateFormatFormcacaoAcademica.format(e.getData_fim());
-                        Chunk styleParagrafoFormacaoAcademicaCursoDataInicioFim = new Chunk(e.getNome_curso() + " " + dataInicioFormatada + " - " + dataFimFormatada, fontParagrafoFormacaoAcademicaCurso);
-                        Chunk styleParagrafoFormacaoAcademicaInstituicao = new Chunk(e.getNome_instituicao(), fontParagrafoFormacaoAcademicaInstituicao);
+                        Chunk styleParagrafoFormacaoAcademicaCursoDataInicioFim = new Chunk(e.getNome_curso() + " " + dataInicioFormatada + " - " + dataFimFormatada, fontTexto);
+                        Chunk styleParagrafoFormacaoAcademicaInstituicao = new Chunk(e.getNome_instituicao(), fontTexto);
                         paragrafoFormacaoAcademica.add(styleParagrafoFormacaoAcademicaCursoDataInicioFim);
                         paragrafoFormacaoAcademica.add("\n");
                         paragrafoFormacaoAcademica.add(styleParagrafoFormacaoAcademicaInstituicao);
@@ -201,24 +174,18 @@ public class ExportCurriculumPdf {
 
             // *********************** IDIOMAS *********************** //
             Paragraph paragrafoTituloIdioma = new Paragraph();
-            Font fontparagrafoTituloIdioma = new Font(Font.FontFamily.HELVETICA, 15);
-            fontparagrafoTituloIdioma.setColor(new BaseColor(0x4A, 0x86, 0xE8));
-            Chunk styleparagrafoTituloIdioma = new Chunk("IDIOMAS", fontparagrafoTituloIdioma);
-            paragrafoTituloIdioma.add(styleparagrafoTituloIdioma);
+            Chunk styleParagrafoTituloIdioma = new Chunk("IDIOMAS", fontSubTitulo);
+            paragrafoTituloIdioma.add(styleParagrafoTituloIdioma);
             documento.add(paragrafoTituloIdioma);
 
             Paragraph paragrafoIdioma = new Paragraph();
             Font fontParagrafoIdiomaNome = new Font(Font.FontFamily.HELVETICA, 13, Font.BOLD);
             fontParagrafoIdiomaNome.setColor(BaseColor.GRAY);
-            Font fontParagrafoIdiomaNivelConversacao = new Font(Font.FontFamily.HELVETICA, 13);
-            fontParagrafoIdiomaNivelConversacao.setColor(BaseColor.GRAY);
-            Font fontParagrafoIdiomaNivelEscritaLeitura = new Font(Font.FontFamily.HELVETICA, 13);
-            fontParagrafoIdiomaNivelEscritaLeitura.setColor(BaseColor.GRAY);
             curriculum.getIdiomas().stream()
                     .forEach(e -> {
                         Chunk styleParagrafoIdiomaNome = new Chunk(e.getNome_idioma(), fontParagrafoIdiomaNome);
-                        Chunk styleParagrafoIdiomaNivelConversacao = new Chunk(e.getNivel_conversacao(), fontParagrafoIdiomaNivelConversacao);
-                        Chunk styleParagrafoIdiomaNivelEscritaLeitura = new Chunk(e.getNivel_escrita_leitura(), fontParagrafoIdiomaNivelEscritaLeitura);
+                        Chunk styleParagrafoIdiomaNivelConversacao = new Chunk(e.getNivel_conversacao(), fontTexto);
+                        Chunk styleParagrafoIdiomaNivelEscritaLeitura = new Chunk(e.getNivel_escrita_leitura(), fontTexto);
                         paragrafoIdioma.add(styleParagrafoIdiomaNome);
                         paragrafoIdioma.add("\n");
                         paragrafoIdioma.add(styleParagrafoIdiomaNivelConversacao);
@@ -229,6 +196,7 @@ public class ExportCurriculumPdf {
                     });
             documento.add(paragrafoIdioma);
 
+            // *********************** COPYRIGHT *********************** //
             documento.add(new Chunk(linha));
             Paragraph paragrafoCopyright = new Paragraph();
             paragrafoCopyright.setAlignment(Element.ALIGN_CENTER);
