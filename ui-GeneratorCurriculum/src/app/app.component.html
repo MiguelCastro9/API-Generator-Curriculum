@@ -8,11 +8,8 @@
       <h5>Formulário:</h5>
       <br>
       <form>
+
         <div class="row">
-
-
-
-
           <div class="col-md-6">
             <div class="form-group">
               <label for="nome">* Qual seu nome ?</label>
@@ -30,10 +27,6 @@
               <small id="numero_contato" class="form-text text-muted">Ex.: +55 11 9 1234-5678...</small>
             </div>
           </div>
-
-
-
-
 
           <div class="col-md-6">
             <div class="form-group">
@@ -54,25 +47,62 @@
               <small id="email" class="form-text text-muted">Ex.: miguel@email.com...</small>
             </div>
           </div>
-
-
-
-
-
         </div>
 
         <div class="form-group">
-          <label for="conhecimentos">* Qual são seus conhecimentos ?</label>
+          <label for="links_contato">* Qual são seus links de contato ?</label>
           <div class="input-group mb-3">
-            <input type="text" id="valor" name="valor" [(ngModel)]="valor" class="form-control">
+            <input type="text" id="link" name="link" [(ngModel)]="link" class="form-control">
             <div class="input-group-append">
-              <button class="btn btn-outline-primary" type="button" (click)="adicionarConhecimentos(valor);">Adicionar</button>
+              <button class="btn btn-outline-primary" type="button" *ngIf="link.length == null" disabled>adicionar ( {{links_contato.length}} de 10)</button>
+              <button class="btn btn-outline-primary" type="button" *ngIf="links_contato.length < 10 && link.length != 0" (click)="adicionarLinksContato(link);">adicionar ( {{links_contato.length}} de 10)</button>
+              <button class="btn btn-outline-primary" type="button" *ngIf="links_contato.length >= 10" disabled>Limite atingido</button>
             </div>
           </div>
-          <div *ngIf="conhecimentos.length > 0" class="conhecimentos">
-            <p *ngFor="let item of conhecimentos">
+          <div *ngIf="links_contato.length > 0" class="links_contato">
+            <p *ngFor="let item of links_contato">
               {{item}}
             </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="nome">* Qual seu nome ?</label>
+              <input type="text" id="nome" name="nome" [(ngModel)]="nome" class="form-control">
+              <small id="nome" class="form-text text-muted">Ex.: Miguel Castro...</small>
+            </div>
+            <div class="form-group">
+              <label for="estado">* De qual estado você é ?</label>
+              <input type="text" id="estado" name="estado" [(ngModel)]="estado" class="form-control">
+              <small id="estado" class="form-text text-muted">Ex.: São Paulo...</small>
+            </div>
+            <div class="form-group">
+              <label for="numero_contato">* Qual seu número de contato ?</label>
+              <input type="text" id="numero_contato" name="numero_contato" [(ngModel)]="numero_contato" class="form-control">
+              <small id="numero_contato" class="form-text text-muted">Ex.: +55 11 9 1234-5678...</small>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="cargoAtual">Qual seu cargo atual ?</label>
+              <input type="text" id="cargoAtual" name="cargoAtual" [(ngModel)]="cargo_atual" class="form-control">
+              <small id="cargoAtual" class="form-text text-muted">Ex.: Desenvolvedor, Bancário...</small>
+            </div>
+            <div class="form-group">
+              <label for="pais">* De qual país você é ?</label>
+              <select id="pais" name="pais" [(ngModel)]="pais" class="form-control">
+                <option value="brasil">Brasil</option>
+              </select>
+              <small id="pais" class="form-text text-muted">Ex.: Brasil...</small>
+            </div>
+            <div class="form-group">
+              <label for="email">* Qual seu e-mail ?</label>
+              <input type="email" id="email" name="email" [(ngModel)]="email_contato" class="form-control">
+              <small id="email" class="form-text text-muted">Ex.: miguel@email.com...</small>
+            </div>
           </div>
         </div>
 
@@ -89,9 +119,9 @@
         <p>{{pais}}</p>
         <p>{{numero_contato}}</p>
         <p>{{email_contato}}</p>
-        <p>Conhecimentos:</p>
-        <p *ngFor="let item of conhecimentos">
-          • {{item}}
+        <p>Links de contato:</p>
+        <p *ngFor="let item of links_contato">
+          {{item}}
         </p>
       </div>
     </div>

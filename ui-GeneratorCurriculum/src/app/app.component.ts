@@ -14,8 +14,8 @@ export class AppComponent {
   pais!: string;
   numero_contato!: string;
   email_contato!: string;
-  valor!: string;
-  conhecimentos: string[] = [];
+  link!: string;
+  links_contato: string[] = [];
 
   constructor() { }
 
@@ -23,8 +23,8 @@ export class AppComponent {
 
   }
 
-  adicionarConhecimentos(valor: string) {
-    this.conhecimentos.push(valor);
+  adicionarLinksContato(link: string) {
+    this.links_contato.push(link);
   }
 }
 
