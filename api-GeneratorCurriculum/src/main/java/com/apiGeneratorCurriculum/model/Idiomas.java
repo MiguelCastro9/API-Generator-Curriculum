@@ -13,5 +13,5 @@ public class Idiomas {
     
     private String nivel_conversacao;
     
-    private String nivel_leitura;
+    private String nivel_escrita_leitura;
 }
