@@ -14,11 +14,17 @@ export class AppComponent {
   pais!: string;
   numero_contato!: string;
   email_contato!: string;
+  valor!: string;
+  conhecimentos: string[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
 
+  }
+
+  adicionarConhecimentos(valor: string) {
+    this.conhecimentos.push(valor);
   }
 }
 

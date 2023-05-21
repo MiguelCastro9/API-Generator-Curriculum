@@ -60,6 +60,23 @@
 
 
         </div>
+
+        <div class="form-group">
+          <label for="conhecimentos">* Qual são seus conhecimentos ?</label>
+          <div class="input-group mb-3">
+            <input type="text" id="valor" name="valor" [(ngModel)]="valor" class="form-control">
+            <div class="input-group-append">
+              <button class="btn btn-outline-primary" type="button" (click)="adicionarConhecimentos(valor);">Adicionar</button>
+            </div>
+          </div>
+          <div *ngIf="conhecimentos.length > 0" class="conhecimentos">
+            <p *ngFor="let item of conhecimentos">
+              {{item}}
+            </p>
+          </div>
+        </div>
+
+
       </form>
     </div>
     <div class="col-md-6">
@@ -72,6 +89,10 @@
         <p>{{pais}}</p>
         <p>{{numero_contato}}</p>
         <p>{{email_contato}}</p>
+        <p>Conhecimentos:</p>
+        <p *ngFor="let item of conhecimentos">
+          • {{item}}
+        </p>
       </div>
     </div>
   </div>
