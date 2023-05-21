@@ -1,0 +1,15 @@
+.vertical-line {
+  border-right: 3px solid black;
+}
+
+@media (max-width: 767px) {
+  .vertical-line {
+    border-right: none;
+  }
+}
+
+.curriculo {
+  border: 2px solid black;
+  box-shadow: 2px 2px 2px;
+  padding: 10px;
+}

@@ -1,0 +1,78 @@
+<nav class="navbar navbar-light bg-primary">
+  <a class="navbar-brand">Curriculum Generator</a>
+</nav>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 vertical-line">
+      <h5>Formulário:</h5>
+      <br>
+      <form>
+        <div class="row">
+
+
+
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="nome">* Qual seu nome ?</label>
+              <input type="text" id="nome" name="nome" [(ngModel)]="nome" class="form-control">
+              <small id="nome" class="form-text text-muted">Ex.: Miguel Castro...</small>
+            </div>
+            <div class="form-group">
+              <label for="estado">* De qual estado você é ?</label>
+              <input type="text" id="estado" name="estado" [(ngModel)]="estado" class="form-control">
+              <small id="estado" class="form-text text-muted">Ex.: São Paulo...</small>
+            </div>
+            <div class="form-group">
+              <label for="numero_contato">* Qual seu número de contato ?</label>
+              <input type="text" id="numero_contato" name="numero_contato" [(ngModel)]="numero_contato" class="form-control">
+              <small id="numero_contato" class="form-text text-muted">Ex.: +55 11 9 1234-5678...</small>
+            </div>
+          </div>
+
+
+
+
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="cargoAtual">Qual seu cargo atual ?</label>
+              <input type="text" id="cargoAtual" name="cargoAtual" [(ngModel)]="cargo_atual" class="form-control">
+              <small id="cargoAtual" class="form-text text-muted">Ex.: Desenvolvedor, Bancário...</small>
+            </div>
+            <div class="form-group">
+              <label for="pais">* De qual país você é ?</label>
+              <select id="pais" name="pais" [(ngModel)]="pais" class="form-control">
+                <option value="brasil">Brasil</option>
+              </select>
+              <small id="pais" class="form-text text-muted">Ex.: Brasil...</small>
+            </div>
+            <div class="form-group">
+              <label for="email">* Qual seu e-mail ?</label>
+              <input type="email" id="email" name="email" [(ngModel)]="email_contato" class="form-control">
+              <small id="email" class="form-text text-muted">Ex.: miguel@email.com...</small>
+            </div>
+          </div>
+
+
+
+
+
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <h5>Currículo</h5>
+      <br>
+      <div class="curriculo">
+        <p>{{nome}}</p>
+        <p>{{cargo_atual}}</p>
+        <p>{{estado}}</p>
+        <p>{{pais}}</p>
+        <p>{{numero_contato}}</p>
+        <p>{{email_contato}}</p>
+      </div>
+    </div>
+  </div>
+</div>
