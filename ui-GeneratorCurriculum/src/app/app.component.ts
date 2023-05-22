@@ -28,15 +28,44 @@ export class AppComponent {
   };
 
   link!: string;
+  experienciasProfissionais: any[] = [];
+  adicionaProfissao: number[] = [];
+  totalProfissao!: number;
 
   constructor() { }
 
   ngOnInit(): void {
 
+    this.totalProfissao = 0;
+
   }
 
   adicionarLinksContato(link: string) {
     this.curriculum.links_contato.push(link);
+  }
+
+  adicionarProfissao() {
+    this.totalProfissao++;
+    this.adicionaProfissao.push(this.totalProfissao);
+    const novaProfissao = {
+      nome_empresa: '',
+      cargo: '',
+      data_inicio: '',
+      data_fim: '',
+      descricao_cargo: ''
+    };
+    this.experienciasProfissionais.push(novaProfissao);
+  } //RESOLVER ERRO DE AO ADICIONAR NOVO GRUPO DE CAMPOS OS VALORES SAO APAGADOS
+
+removerProfissao(index: number) {
+  this.totalProfissao--;
+  this.adicionaProfissao.splice(index, 1);
+  this.experienciasProfissionais.splice(index, 1);
+}
+
+  definirProfissoes() {
+    this.curriculum.experiencia_profissional = this.experienciasProfissionais;
+    console.log(this.curriculum.experiencia_profissional);
   }
 }
 

@@ -14,14 +14,18 @@
   padding: 10px;
 }
 
-.links_contato {
+.links-contato {
   border: 2px solid black;
   border-radius: 2px;
   padding: 10px;
 }
 
-.experiencias_profissionais {
+.experiencias-profissionais {
   border: 2px solid black;
   border-radius: 2px;
   padding: 10px;
+}
+
+.button-adiciona-experiencia-profissional {
+  margin-bottom: 20px;
 }

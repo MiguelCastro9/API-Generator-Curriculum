@@ -44,6 +44,7 @@ public class Curriculum {
     @Length(min = 10, max = 60, message = "Objetivo profissional requer no mínimo {min} e no máximo {max} caracteres.")
     private String objetivo_profissional;
 
+    @Size(max = 10, message = "A lista de experiências deve ter no máximo {max} experiências")
     private List<ExperienciaProfissional> experiencias_profissionais;
 
     @NotEmpty(message = "A lista de conhecimentos não pode estar vazia.")
