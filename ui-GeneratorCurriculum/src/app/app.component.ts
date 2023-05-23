@@ -46,27 +46,28 @@ export class AppComponent {
 
   adicionarProfissao() {
     this.totalProfissao++;
-    this.adicionaProfissao.push(this.totalProfissao);
+    this.experienciasProfissionais.splice(this.totalProfissao, 1);
     const novaProfissao = {
       nome_empresa: '',
       cargo: '',
-      data_inicio: '',
-      data_fim: '',
+      data_inicio: undefined,
+      data_fim: undefined,
       descricao_cargo: ''
     };
     this.experienciasProfissionais.push(novaProfissao);
-  } //RESOLVER ERRO DE AO ADICIONAR NOVO GRUPO DE CAMPOS OS VALORES SAO APAGADOS
+    console.log('add: ' + this.experienciasProfissionais);
 
-removerProfissao(index: number) {
-  this.totalProfissao--;
-  this.adicionaProfissao.splice(index, 1);
-  this.experienciasProfissionais.splice(index, 1);
-}
-
-  definirProfissoes() {
-    this.curriculum.experiencia_profissional = this.experienciasProfissionais;
-    console.log(this.curriculum.experiencia_profissional);
   }
+
+  removerProfissao(index: number) {
+    this.totalProfissao--;
+    this.adicionaProfissao.splice(index, 1);
+    this.experienciasProfissionais.splice(index, 1);
+    console.log('del: ' + this.experienciasProfissionais);
+  }
+
+  //QUANDO FOR REALIZAR A REQUISAO AI PASSA (this.curriculum.experiencia_profissional = this.experienciasProfissionais)
+
 }
 
 

@@ -89,7 +89,7 @@
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" (click)="definirProfissoes();" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -150,7 +150,8 @@
           </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-primary" (click)="definirProfissoes();" data-dismiss="modal">concluído</button>
+            <button type="button" class="btn btn-outline-primary" *ngIf="totalProfissao > 0" data-dismiss="modal">concluído</button>
+            <button type="button" class="btn btn-outline-primary" *ngIf="totalProfissao <= 0" data-dismiss="modal" disabled>concluído</button>
           </div>
         </div>
       </div>
