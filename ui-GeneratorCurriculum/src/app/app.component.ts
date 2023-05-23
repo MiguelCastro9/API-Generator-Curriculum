@@ -25,18 +25,20 @@ export class AppComponent {
       data_fim: undefined,
       descricao_cargo: ''
     }],
+    conhecimentos: []
   };
 
   link!: string;
   experienciasProfissionais: any[] = [];
   adicionaProfissao: number[] = [];
   totalProfissao!: number;
+  conhecimento!: string;
 
   constructor() { }
 
   ngOnInit(): void {
 
-    this.totalProfissao = 0;
+    this.totalProfissao = 1;
 
   }
 
@@ -46,7 +48,7 @@ export class AppComponent {
 
   adicionarProfissao() {
     this.totalProfissao++;
-    this.experienciasProfissionais.splice(this.totalProfissao, 1);
+    this.adicionaProfissao.push(this.totalProfissao);
     const novaProfissao = {
       nome_empresa: '',
       cargo: '',
@@ -54,20 +56,23 @@ export class AppComponent {
       data_fim: undefined,
       descricao_cargo: ''
     };
-    this.experienciasProfissionais.push(novaProfissao);
-    console.log('add: ' + this.experienciasProfissionais);
-
+    this.curriculum.experiencia_profissional.push(novaProfissao);
   }
 
   removerProfissao(index: number) {
     this.totalProfissao--;
     this.adicionaProfissao.splice(index, 1);
-    this.experienciasProfissionais.splice(index, 1);
-    console.log('del: ' + this.experienciasProfissionais);
+    this.curriculum.experiencia_profissional.splice(index, 1);
   }
 
   //QUANDO FOR REALIZAR A REQUISAO AI PASSA (this.curriculum.experiencia_profissional = this.experienciasProfissionais)
+  definirProfissoes() {
 
+  }
+
+  adicionarConhecimentos(conhecimento: string) {
+    this.curriculum.conhecimentos.push(conhecimento);
+  }
 }
 
 

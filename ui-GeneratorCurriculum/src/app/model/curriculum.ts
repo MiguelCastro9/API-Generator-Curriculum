@@ -11,5 +11,5 @@ export interface Curriculum {
   links_contato: string[];
   objetivo_profissional: string;
   experiencia_profissional: ExperienciaProfissional[];
-
+  conhecimentos: string[];
 }

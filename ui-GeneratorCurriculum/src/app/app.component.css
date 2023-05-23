@@ -29,3 +29,9 @@
 .button-adiciona-experiencia-profissional {
   margin-bottom: 20px;
 }
+
+.conhecimentos {
+  border: 2px solid black;
+  border-radius: 2px;
+  padding: 10px;
+}
