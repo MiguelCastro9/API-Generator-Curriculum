@@ -55,5 +55,6 @@ public class Curriculum {
     @Size(max = 10, message = "A lista de formações deve ter no máximo {max} formações")
     private List<FormacaoAcademica> formacoes_academicas;
 
+    @Size(max = 10, message = "A lista de idiomas deve ter no máximo {max} idiomas")
     private List<Idiomas> idiomas;
 }

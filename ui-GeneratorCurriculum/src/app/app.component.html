@@ -268,6 +268,71 @@
 
 
 
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#idioma">
+      Idiomas
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="idioma" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="idiomasLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <p>Idiomas:</p>
+              <button *ngIf="totalIdiomas < 10" class="btn btn-outline-primary button-adiciona-idiomas" (click)="adicionarIdioma();">adicionar ({{curriculum.idiomas.length}} de 10)</button>
+              <button *ngIf="totalIdiomas >= 10" class="btn btn-outline-primary button-adiciona-idiomas" disabled>adicionar ({{totalIdiomas}} de 10)</button>
+            </div>
+
+
+
+
+            <div *ngIf="curriculum.idiomas.length > 0">
+              <div *ngFor="let item of curriculum.idiomas; let i = index">
+                <div class="idiomas">
+                <button class="btn btn-outline-danger" (click)="removerIdioma(i);"><span>&times; remover</span></button>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <br>
+                      <label for="empresa">* Qual o nome do idioma ?</label>
+                      <input type="text" id="idioma" name="idioma" [(ngModel)]="item.nome_idioma" class="form-control">
+                      <small id="idioma" class="form-text text-muted">Ex.: Inglês, Espanhol...</small>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="nivelConversacao">Nível de conversação ?</label>
+                      <input type="text" id="nivelConversacao" name="nivelConversacao" [(ngModel)]="item.nivel_conversacao" class="form-control">
+                      <small id="nivelConversacao" class="form-text text-muted">Ex.: Bom...</small>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="nivelEscritaLeitura">Nível de escrita/leitura ?</label>
+                      <input type="text" id="nivelEscritaLeitura" name="nivelEscritaLeitura" [(ngModel)]="item.nivel_escrita_leitura" class="form-control">
+                      <small id="nivelEscritaLeitura" class="form-text text-muted">Ex.: Bom...</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br>
+              </div>
+          </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-primary" *ngIf="totalIdiomas > 0" data-dismiss="modal">concluído</button>
+            <button type="button" class="btn btn-outline-primary" *ngIf="totalIdiomas <= 0" data-dismiss="modal" disabled>concluído</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<br>
 
 
 
@@ -320,6 +385,13 @@
           <p>{{item.data_inicio}}</p>
           <p>{{item.data_fim}}</p>
           <p>{{item.nome_instituicao}}</p>
+        </div>
+        <hr>
+        <hr>
+        <div *ngFor="let item of curriculum.idiomas">
+          <p>{{item.nome_idioma}}</p>
+          <p>{{item.nivel_conversacao}}</p>
+          <p>{{item.nivel_escrita_leitura}}</p>
         </div>
         <hr>
       </div>

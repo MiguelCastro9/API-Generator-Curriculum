@@ -50,6 +50,9 @@ export class AppComponent {
   formacoesAcademicas: any[] = [];
   adicionaFormacao: number[] = [];
   totalFormacao!: number;
+  idiomas: any[] = [];
+  adicionaIdioma: number[] = [];
+  totalIdiomas!: number;
 
   constructor() { }
 
@@ -57,6 +60,7 @@ export class AppComponent {
 
     this.totalProfissao = 1;
     this.totalFormacao = 1;
+    this.totalIdiomas = 1;
 
   }
 
@@ -103,6 +107,23 @@ export class AppComponent {
     this.totalFormacao--;
     this.adicionaFormacao.splice(index, 1);
     this.curriculum.formacoes_academicas.splice(index, 1);
+  }
+
+  adicionarIdioma() {
+    this.totalIdiomas++;
+    this.adicionaIdioma.push(this.totalIdiomas);
+    const novoIdioma = {
+      nome_idioma: '',
+      nivel_conversacao: '',
+      nivel_escrita_leitura: ''
+    };
+    this.curriculum.idiomas.push(novoIdioma);
+  }
+
+  removerIdioma(index: number) {
+    this.totalIdiomas--;
+    this.adicionaIdioma.splice(index, 1);
+    this.curriculum.idiomas.splice(index, 1);
   }
 }
 

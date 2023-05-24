@@ -45,3 +45,13 @@
 .button-adiciona-formacao-academica {
   margin-bottom: 20px;
 }
+
+.idiomas {
+  border: 2px solid black;
+  border-radius: 2px;
+  padding: 10px;
+}
+
+.button-adiciona-idiomas {
+  margin-bottom: 20px;
+}
