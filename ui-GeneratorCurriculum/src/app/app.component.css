@@ -35,3 +35,13 @@
   border-radius: 2px;
   padding: 10px;
 }
+
+.formacoes-academicas {
+  border: 2px solid black;
+  border-radius: 2px;
+  padding: 10px;
+}
+
+.button-adiciona-formacao-academica {
+  margin-bottom: 20px;
+}

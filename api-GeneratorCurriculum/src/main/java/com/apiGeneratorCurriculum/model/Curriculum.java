@@ -52,6 +52,7 @@ public class Curriculum {
     private List<@NotBlank @Length(min = 3, max = 20, message = "Cada item requer no mínimo {min} e no máximo {max} caracteres.") String> conhecimentos;
 
     @Valid
+    @Size(max = 10, message = "A lista de formações deve ter no máximo {max} formações")
     private List<FormacaoAcademica> formacoes_academicas;
 
     private List<Idiomas> idiomas;

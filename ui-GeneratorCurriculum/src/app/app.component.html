@@ -96,15 +96,15 @@
           <div class="modal-body">
             <div class="d-flex justify-content-between align-items-center">
               <p>Experiências profissionais:</p>
-              <button *ngIf="totalProfissao < 10" class="btn btn-outline-primary button-adiciona-experiencia-profissional" (click)="adicionarProfissao();">adicionar ({{curriculum.experiencia_profissional.length}} de 10)</button>
+              <button *ngIf="totalProfissao < 10" class="btn btn-outline-primary button-adiciona-experiencia-profissional" (click)="adicionarProfissao();">adicionar ({{curriculum.experiencias_profissionais.length}} de 10)</button>
               <button *ngIf="totalProfissao >= 10" class="btn btn-outline-primary button-adiciona-experiencia-profissional" disabled>adicionar ({{totalProfissao}} de 10)</button>
             </div>
 
 
 
 
-            <div *ngIf="curriculum.experiencia_profissional.length > 0">
-              <div *ngFor="let item of curriculum.experiencia_profissional; let i = index">
+            <div *ngIf="curriculum.experiencias_profissionais.length > 0">
+              <div *ngFor="let item of curriculum.experiencias_profissionais; let i = index">
                 <div class="experiencias-profissionais">
                 <button class="btn btn-outline-danger" (click)="removerProfissao(i);"><span>&times; remover</span></button>
                 <div class="row">
@@ -150,34 +150,122 @@
           </div>
           </div>
           <div class="modal-footer">
-            <button type="button" (click)="definirProfissoes();" class="btn btn-outline-primary" *ngIf="totalProfissao > 0" data-dismiss="modal">concluído</button>
+            <button type="button" class="btn btn-outline-primary" *ngIf="totalProfissao > 0" data-dismiss="modal">concluído</button>
             <button type="button" class="btn btn-outline-primary" *ngIf="totalProfissao <= 0" data-dismiss="modal" disabled>concluído</button>
           </div>
         </div>
       </div>
     </div>
+<br>
 
+
+
+
+<div class="form-group">
+  <label for="conhecimentos">* Qual são seus conhecimentos ?</label>
+  <div class="input-group mb-3">
+    <input type="text" id="conhecimento" name="conhecimento" [(ngModel)]="conhecimento" class="form-control">
+    <div class="input-group-append">
+      <button class="btn btn-outline-primary" type="button" *ngIf="!conhecimento || conhecimento.length === 0" disabled>adicionar ({{curriculum.conhecimentos.length}} de 50)</button>
+      <button class="btn btn-outline-primary" type="button" *ngIf="conhecimento && curriculum.conhecimentos.length < 50 && conhecimento.length !== 0" (click)="adicionarConhecimentos(conhecimento);">adicionar ({{curriculum.conhecimentos.length}} de 50)</button>
+      <button class="btn btn-outline-primary" type="button" *ngIf="curriculum.conhecimentos.length === 50" disabled>Limite atingido</button>
+    </div>
+  </div>
+  <div *ngIf="curriculum.conhecimentos.length > 0" class="conhecimentos">
+    <p *ngFor="let item of curriculum.conhecimentos">
+      • {{item}}
+    </p>
+  </div>
+</div>
 
 <br>
 
 
 
-    <div class="form-group">
-      <label for="conhecimentos">* Qual são seus conhecimentos ?</label>
-      <div class="input-group mb-3">
-        <input type="text" id="conhecimento" name="conhecimento" [(ngModel)]="conhecimento" class="form-control">
-        <div class="input-group-append">
-          <button class="btn btn-outline-primary" type="button" *ngIf="!conhecimento || conhecimento.length === 0" disabled>adicionar ({{curriculum.conhecimentos.length}} de 50)</button>
-          <button class="btn btn-outline-primary" type="button" *ngIf="conhecimento && curriculum.conhecimentos.length < 50 && conhecimento.length !== 0" (click)="adicionarConhecimentos(conhecimento);">adicionar ({{curriculum.conhecimentos.length}} de 50)</button>
-          <button class="btn btn-outline-primary" type="button" *ngIf="curriculum.conhecimentos.length === 50" disabled>Limite atingido</button>
+
+
+
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#formacao-academica">
+      Formações acadêmicas
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="formacao-academica" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="formacao-academicaLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <p>Formações acadêmicas:</p>
+              <button *ngIf="totalFormacao < 10" class="btn btn-outline-primary button-adiciona-formacao-academica" (click)="adicionarFormacao();">adicionar ({{curriculum.formacoes_academicas.length}} de 10)</button>
+              <button *ngIf="totalFormacao >= 10" class="btn btn-outline-primary button-adiciona-formacao-academica" disabled>adicionar ({{totalFormacao}} de 10)</button>
+            </div>
+
+
+
+
+            <div *ngIf="curriculum.formacoes_academicas.length > 0">
+              <div *ngFor="let item of curriculum.formacoes_academicas; let i = index">
+                <div class="formacoes-academicas">
+                <button class="btn btn-outline-danger" (click)="removerFormacao(i);"><span>&times; remover</span></button>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <br>
+                      <label for="empresa">* Qual o nome do curso ?</label>
+                      <input type="text" id="curso" name="curso" [(ngModel)]="item.nome_curso" class="form-control">
+                      <small id="curso" class="form-text text-muted">Ex.: Desenvolvimento, Banco de dados...</small>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="dataInicio">Qual a data de início ?</label>
+                      <input type="date" id="dataInicio" name="dataIncio" [(ngModel)]="item.data_inicio" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="dataFim">Qual a data fim ?</label>
+                      <input type="date" id="dataFim" name="dataFim" [(ngModel)]="item.data_fim" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="instituicao">Nome da instituição ?</label>
+                      <input type="text" id="instituicao" name="instituicao" [(ngModel)]="item.nome_instituicao" class="form-control">
+                      <small id="instituicao" class="form-text text-muted">Ex.: Senac...</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br>
+              </div>
+          </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-primary" *ngIf="totalFormacao > 0" data-dismiss="modal">concluído</button>
+            <button type="button" class="btn btn-outline-primary" *ngIf="totalFormacao <= 0" data-dismiss="modal" disabled>concluído</button>
+          </div>
         </div>
       </div>
-      <div *ngIf="curriculum.conhecimentos.length > 0" class="conhecimentos">
-        <p *ngFor="let item of curriculum.conhecimentos">
-          • {{item}}
-        </p>
-      </div>
     </div>
+<br>
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -214,7 +302,7 @@
         <p>{{curriculum.objetivo_profissional}}</p>
         <p>Experiências Profissionais:</p>
         <hr>
-        <div *ngFor="let item of curriculum.experiencia_profissional">
+        <div *ngFor="let item of curriculum.experiencias_profissionais">
           <p>{{item.nome_empresa}}</p>
           <p>{{item.cargo}}</p>
           <p>{{item.data_inicio}}</p>
@@ -226,6 +314,14 @@
         <p *ngFor="let item of curriculum.conhecimentos">
           • {{item}}
         </p>
+        <hr>
+        <div *ngFor="let item of curriculum.formacoes_academicas">
+          <p>{{item.nome_curso}}</p>
+          <p>{{item.data_inicio}}</p>
+          <p>{{item.data_fim}}</p>
+          <p>{{item.nome_instituicao}}</p>
+        </div>
+        <hr>
       </div>
     </div>
 

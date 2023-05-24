@@ -1,4 +1,6 @@
 import { ExperienciaProfissional } from "./experienciaProfissional";
+import { FormacaoAcademica } from "./formacaoAcademica";
+import { Idiomas } from "./idiomas";
 
 export interface Curriculum {
 
@@ -10,6 +12,8 @@ export interface Curriculum {
   email_contato: string;
   links_contato: string[];
   objetivo_profissional: string;
-  experiencia_profissional: ExperienciaProfissional[];
+  experiencias_profissionais: ExperienciaProfissional[];
   conhecimentos: string[];
+  formacoes_academicas: FormacaoAcademica[];
+  idiomas: Idiomas[];
 }
