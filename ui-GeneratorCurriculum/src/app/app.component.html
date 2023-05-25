@@ -30,12 +30,13 @@
             <div class="form-group">
               <label for="cargo_atual">Qual seu cargo atual ?</label>
               <input type="text" id="cargo_atual" name="cargo_atual" [(ngModel)]="curriculum.cargo_atual" class="form-control">
-              <small id="cargo_atual" class="form-text text-muted">Ex.: Desenvolvedor, Bancário...</small>
+              <small id="cargo_atual" class="form-text text-muted">Ex.: Desenvolvedor...</small>
             </div>
             <div class="form-group">
               <label for="pais">* De qual país você é ?</label>
               <select id="pais" name="pais" [(ngModel)]="curriculum.pais" class="form-control">
-                <option value="brasil">Brasil</option>
+                <option value="" selected></option>
+                <option value="Brasil">Brasil</option>
               </select>
               <small id="pais" class="form-text text-muted">Ex.: Brasil...</small>
             </div>
@@ -47,44 +48,92 @@
           </div>
         </div>
 
-
-
-
-
-        <div class="form-group">
-          <label for="links_contato">* Qual são seus links de contato ?</label>
-          <div class="input-group mb-3">
-            <input type="text" id="link" name="link" [(ngModel)]="link" class="form-control">
-            <div class="input-group-append">
-              <button class="btn btn-outline-primary" type="button" *ngIf="!link || link.length === 0" disabled>adicionar ({{curriculum.links_contato.length}} de 10)</button>
-              <button class="btn btn-outline-primary" type="button" *ngIf="link && curriculum.links_contato.length < 10 && link.length !== 0" (click)="adicionarLinksContato(link);">adicionar ({{curriculum.links_contato.length}} de 10)</button>
-              <button class="btn btn-outline-primary" type="button" *ngIf="curriculum.links_contato.length === 10" disabled>Limite atingido</button>
-            </div>
-          </div>
-          <div *ngIf="curriculum.links_contato.length > 0" class="links-contato">
-            <p *ngFor="let item of curriculum.links_contato">
-              • {{item}}
-            </p>
-          </div>
-        </div>
         <div class="form-group">
           <label for="objetivo_profissional">* Qual seu objetivo profissional ?</label>
           <input type="text" id="objetivo_profissional" name="objetivo_profissional" [(ngModel)]="curriculum.objetivo_profissional" class="form-control">
           <small id="objetivo_profissional" class="form-text text-muted">Ex.: Desenvolvimento de software...</small>
         </div>
 
+<br>
+        <div class="row">
+          <div class="col-md-6">
+            <!-- Button trigger modal - links de contato -->
+            <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#linkModal">
+              Links de contato
+            </button>
+          </div>
+          <div class="col-md-6">
+          <!-- Button trigger modal - Experiências profissionais -->
+          <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#experiencia-profissional">
+            Experiências profissionais
+          </button>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-6">
+            <!-- Button trigger modal - conhecimentos -->
+            <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#conhecimentoModal">
+              Conhecimentos e experiências
+            </button>
+          </div>
+          <div class="col-md-6">
+            <!-- Button trigger modal - formacao academica -->
+            <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#formacao-academica">
+              Formações acadêmicas
+            </button>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-12">
+                    <!-- Button trigger modal - idiomas -->
+        <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#idioma">
+          Idiomas
+        </button>
+          </div>
+        </div>
 
 
 
 
+<!-- Modal - links de contato -->
+<div class="modal fade" id="linkModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="linkLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="links_contato">* Qual são seus links de contato ?</label>
+          <div class="input-group mb-3">
+            <input type="text" id="link" name="link" [(ngModel)]="link" class="form-control">
+            <div class="input-group-append">
+              <button class="btn btn-outline-primary" type="button" *ngIf="!link || link.length === 0" disabled>Adicionar ({{curriculum.links_contato.length}} de 10)</button>
+              <button class="btn btn-outline-primary" type="button" *ngIf="link && curriculum.links_contato.length < 10 && link.length !== 0" (click)="adicionarLinksContato(link);">Adicionar ({{curriculum.links_contato.length}} de 10)</button>
+              <button class="btn btn-outline-primary" type="button" *ngIf="curriculum.links_contato.length === 10" disabled>Limite atingido</button>
+            </div>
+          </div>
+          <div *ngIf="curriculum.links_contato.length > 0" class="modal-color-custom">
+            <p *ngFor="let item of curriculum.links_contato">
+              • {{item}}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#experiencia-profissional">
-      Experiências profissionais
-    </button>
-
-    <!-- Modal -->
+    <!-- Modal - Experiências profissionais -->
     <div class="modal fade" id="experiencia-profissional" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="experiencia-profissionalLabel" aria-hidden="true">
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -95,9 +144,9 @@
           </div>
           <div class="modal-body">
             <div class="d-flex justify-content-between align-items-center">
-              <p>Experiências profissionais:</p>
-              <button *ngIf="totalProfissao < 10" class="btn btn-outline-primary button-adiciona-experiencia-profissional" (click)="adicionarProfissao();">adicionar ({{curriculum.experiencias_profissionais.length}} de 10)</button>
-              <button *ngIf="totalProfissao >= 10" class="btn btn-outline-primary button-adiciona-experiencia-profissional" disabled>adicionar ({{totalProfissao}} de 10)</button>
+              <p>Quais são suas experiências profissionais ?</p>
+              <button *ngIf="totalProfissao < 10" class="btn btn-outline-primary button-adiciona-experiencia-profissional" (click)="adicionarProfissao();">Adicionar ({{curriculum.experiencias_profissionais.length}} de 10)</button>
+              <button *ngIf="totalProfissao >= 10" class="btn btn-outline-primary button-adiciona-experiencia-profissional" disabled>Adicionar ({{totalProfissao}} de 10)</button>
             </div>
 
 
@@ -105,8 +154,8 @@
 
             <div *ngIf="curriculum.experiencias_profissionais.length > 0">
               <div *ngFor="let item of curriculum.experiencias_profissionais; let i = index">
-                <div class="experiencias-profissionais">
-                <button class="btn btn-outline-danger" (click)="removerProfissao(i);"><span>&times; remover</span></button>
+                <div class="modal-color-custom">
+                <button class="btn btn-outline-danger" (click)="removerProfissao(i);"><span>&times;</span></button>
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
@@ -121,7 +170,7 @@
                       <br>
                       <label for="cargo">Qual o cargo ?</label>
                       <input type="text" id="cargo" name="cargo" [(ngModel)]="item.cargo" class="form-control">
-                      <small id="cargo" class="form-text text-muted">Ex.: Desenvolvedor, Bancário...</small>
+                      <small id="cargo" class="form-text text-muted">Ex.: Desenvolvedor...</small>
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -150,8 +199,8 @@
           </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-primary" *ngIf="totalProfissao > 0" data-dismiss="modal">concluído</button>
-            <button type="button" class="btn btn-outline-primary" *ngIf="totalProfissao <= 0" data-dismiss="modal" disabled>concluído</button>
+            <button type="button" class="btn btn-outline-primary" *ngIf="totalProfissao > 0" data-dismiss="modal">Concluído</button>
+            <button type="button" class="btn btn-outline-primary" *ngIf="totalProfissao <= 0" data-dismiss="modal" disabled>Concluído</button>
           </div>
         </div>
       </div>
@@ -161,24 +210,43 @@
 
 
 
-<div class="form-group">
-  <label for="conhecimentos">* Qual são seus conhecimentos ?</label>
-  <div class="input-group mb-3">
-    <input type="text" id="conhecimento" name="conhecimento" [(ngModel)]="conhecimento" class="form-control">
-    <div class="input-group-append">
-      <button class="btn btn-outline-primary" type="button" *ngIf="!conhecimento || conhecimento.length === 0" disabled>adicionar ({{curriculum.conhecimentos.length}} de 50)</button>
-      <button class="btn btn-outline-primary" type="button" *ngIf="conhecimento && curriculum.conhecimentos.length < 50 && conhecimento.length !== 0" (click)="adicionarConhecimentos(conhecimento);">adicionar ({{curriculum.conhecimentos.length}} de 50)</button>
-      <button class="btn btn-outline-primary" type="button" *ngIf="curriculum.conhecimentos.length === 50" disabled>Limite atingido</button>
+
+
+<!-- Modal - conheicimentos -->
+<div class="modal fade" id="conhecimentoModal" tabindex="-1" aria-labelledby="conhecimentoModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="conhecimentos">* Qual são seus conhecimentos e experiências ?</label>
+          <div class="input-group mb-3">
+            <input type="text" id="conhecimento" name="conhecimento" [(ngModel)]="conhecimento" class="form-control">
+            <div class="input-group-append">
+              <button class="btn btn-outline-primary" type="button" *ngIf="!conhecimento || conhecimento.length === 0" disabled>Adicionar ({{curriculum.conhecimentos.length}} de 50)</button>
+              <button class="btn btn-outline-primary" type="button" *ngIf="conhecimento && curriculum.conhecimentos.length < 50 && conhecimento.length !== 0" (click)="adicionarConhecimentos(conhecimento);">Adicionar ({{curriculum.conhecimentos.length}} de 50)</button>
+              <button class="btn btn-outline-primary" type="button" *ngIf="curriculum.conhecimentos.length === 50" disabled>Limite atingido</button>
+            </div>
+          </div>
+          <div *ngIf="curriculum.conhecimentos.length > 0" class="modal-color-custom">
+            <p *ngFor="let item of curriculum.conhecimentos">
+              • {{item}}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div>
-  </div>
-  <div *ngIf="curriculum.conhecimentos.length > 0" class="conhecimentos">
-    <p *ngFor="let item of curriculum.conhecimentos">
-      • {{item}}
-    </p>
   </div>
 </div>
 
-<br>
 
 
 
@@ -186,12 +254,14 @@
 
 
 
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#formacao-academica">
-      Formações acadêmicas
-    </button>
 
-    <!-- Modal -->
+
+
+
+
+
+
+    <!-- Modal - formacao academica -->
     <div class="modal fade" id="formacao-academica" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="formacao-academicaLabel" aria-hidden="true">
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -202,9 +272,9 @@
           </div>
           <div class="modal-body">
             <div class="d-flex justify-content-between align-items-center">
-              <p>Formações acadêmicas:</p>
-              <button *ngIf="totalFormacao < 10" class="btn btn-outline-primary button-adiciona-formacao-academica" (click)="adicionarFormacao();">adicionar ({{curriculum.formacoes_academicas.length}} de 10)</button>
-              <button *ngIf="totalFormacao >= 10" class="btn btn-outline-primary button-adiciona-formacao-academica" disabled>adicionar ({{totalFormacao}} de 10)</button>
+              <p>Quais são suas formações acadêmicas ?</p>
+              <button *ngIf="totalFormacao < 10" class="btn btn-outline-primary button-adiciona-formacao-academica" (click)="adicionarFormacao();">Adicionar ({{curriculum.formacoes_academicas.length}} de 10)</button>
+              <button *ngIf="totalFormacao >= 10" class="btn btn-outline-primary button-adiciona-formacao-academica" disabled>Adicionar ({{totalFormacao}} de 10)</button>
             </div>
 
 
@@ -212,8 +282,8 @@
 
             <div *ngIf="curriculum.formacoes_academicas.length > 0">
               <div *ngFor="let item of curriculum.formacoes_academicas; let i = index">
-                <div class="formacoes-academicas">
-                <button class="btn btn-outline-danger" (click)="removerFormacao(i);"><span>&times; remover</span></button>
+                <div class="modal-color-custom">
+                <button class="btn btn-outline-danger" (click)="removerFormacao(i);"><span>&times;</span></button>
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
@@ -249,8 +319,8 @@
           </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-primary" *ngIf="totalFormacao > 0" data-dismiss="modal">concluído</button>
-            <button type="button" class="btn btn-outline-primary" *ngIf="totalFormacao <= 0" data-dismiss="modal" disabled>concluído</button>
+            <button type="button" class="btn btn-outline-primary" *ngIf="totalFormacao > 0" data-dismiss="modal">Concluído</button>
+            <button type="button" class="btn btn-outline-primary" *ngIf="totalFormacao <= 0" data-dismiss="modal" disabled>Concluído</button>
           </div>
         </div>
       </div>
@@ -268,12 +338,9 @@
 
 
 
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#idioma">
-      Idiomas
-    </button>
 
-    <!-- Modal -->
+
+    <!-- Modal - idiomas -->
     <div class="modal fade" id="idioma" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="idiomasLabel" aria-hidden="true">
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -284,9 +351,9 @@
           </div>
           <div class="modal-body">
             <div class="d-flex justify-content-between align-items-center">
-              <p>Idiomas:</p>
-              <button *ngIf="totalIdiomas < 10" class="btn btn-outline-primary button-adiciona-idiomas" (click)="adicionarIdioma();">adicionar ({{curriculum.idiomas.length}} de 10)</button>
-              <button *ngIf="totalIdiomas >= 10" class="btn btn-outline-primary button-adiciona-idiomas" disabled>adicionar ({{totalIdiomas}} de 10)</button>
+              <p>Quais são seus idiomas ?</p>
+              <button *ngIf="totalIdiomas < 10" class="btn btn-outline-primary button-adiciona-idiomas" (click)="adicionarIdioma();">Adicionar ({{curriculum.idiomas.length}} de 10)</button>
+              <button *ngIf="totalIdiomas >= 10" class="btn btn-outline-primary button-adiciona-idiomas" disabled>Adicionar ({{totalIdiomas}} de 10)</button>
             </div>
 
 
@@ -294,8 +361,8 @@
 
             <div *ngIf="curriculum.idiomas.length > 0">
               <div *ngFor="let item of curriculum.idiomas; let i = index">
-                <div class="idiomas">
-                <button class="btn btn-outline-danger" (click)="removerIdioma(i);"><span>&times; remover</span></button>
+                <div class="modal-color-custom">
+                <button class="btn btn-outline-danger" (click)="removerIdioma(i);"><span>&times;</span></button>
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
@@ -326,8 +393,8 @@
           </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-outline-primary" *ngIf="totalIdiomas > 0" data-dismiss="modal">concluído</button>
-            <button type="button" class="btn btn-outline-primary" *ngIf="totalIdiomas <= 0" data-dismiss="modal" disabled>concluído</button>
+            <button type="button" class="btn btn-outline-primary" *ngIf="totalIdiomas > 0" data-dismiss="modal">Concluído</button>
+            <button type="button" class="btn btn-outline-primary" *ngIf="totalIdiomas <= 0" data-dismiss="modal" disabled>Concluído</button>
           </div>
         </div>
       </div>
@@ -350,53 +417,56 @@
 
 
     <div class="col-md-6">
-      <h5>Currículo</h5>
+      <h5>Currículo:</h5>
       <br>
       <div class="curriculo">
-        <p>{{curriculum.nome_completo}}</p>
-        <p>{{curriculum.cargo_atual}}</p>
-        <p>{{curriculum.estado}}</p>
-        <p>{{curriculum.pais}}</p>
-        <p>{{curriculum.numero_contato}}</p>
-        <p>{{curriculum.email_contato}}</p>
-        <p>Links de contato:</p>
+        <p class="title-color-custom">{{curriculum.nome_completo}}</p>
+        <p class="sub-title-color-custom">{{curriculum.cargo_atual}}</p>
+        <p class="text-color-custom">{{curriculum.estado}} <span *ngIf="curriculum.pais != ''"> - {{curriculum.pais}}</span></p>
+        <p class="text-color-custom">{{curriculum.numero_contato}}</p>
+        <p class="text-color-custom">{{curriculum.email_contato}}</p>
         <p *ngFor="let item of curriculum.links_contato">
-          {{item}}
+          <span class="text-color-custom">{{item}}</span>
         </p>
-        <p>Objetivo Profissional:</p>
-        <p>{{curriculum.objetivo_profissional}}</p>
-        <p>Experiências Profissionais:</p>
-        <hr>
+        <p class="sub-title-color-custom">OBJETIVO PROFISIONAL</p>
+        <p class="text-color-custom">{{curriculum.objetivo_profissional}}</p>
+        <p *ngIf="curriculum.experiencias_profissionais" class="sub-title-color-custom">EXPERIÊNCIAS PROFISSIONAIS</p>
+
         <div *ngFor="let item of curriculum.experiencias_profissionais">
-          <p>{{item.nome_empresa}}</p>
-          <p>{{item.cargo}}</p>
-          <p>{{item.data_inicio}}</p>
-          <p>{{item.data_fim}}</p>
-          <p>{{item.descricao_cargo}}</p>
+          <p class="text-color-custom">{{item.nome_empresa}}</p>
+          <p class="text-color-custom">{{item.cargo}}</p>
+          <p class="text-color-custom">{{item.data_inicio | date: 'dd/mm/yyyy'}}</p>
+          <p class="text-color-custom">{{item.data_fim | date: 'dd/mm/yyyy'}}</p>
+          <p class="text-color-custom">{{item.descricao_cargo}}</p>
         </div>
-        <hr>
-        <p>Conhecimentos:</p>
+
+        <p class="sub-title-color-custom">CONHECIMENTOS E EXPERIÊNCIAS</p>
         <p *ngFor="let item of curriculum.conhecimentos">
-          • {{item}}
+          <span class="text-color-custom">• {{item}}</span>
         </p>
-        <hr>
+
+        <p class="sub-title-color-custom">FORMAÇÕES ACADÊMICAS</p>
         <div *ngFor="let item of curriculum.formacoes_academicas">
-          <p>{{item.nome_curso}}</p>
-          <p>{{item.data_inicio}}</p>
-          <p>{{item.data_fim}}</p>
-          <p>{{item.nome_instituicao}}</p>
+          <p class="text-color-custom">{{item.nome_curso}}</p>
+          <p class="text-color-custom">{{item.data_inicio | date: 'dd/MM/yyyy'}}</p>
+          <p class="text-color-custom">{{item.data_fim | date: 'dd/mm/yyyy'}}</p>
+          <p class="text-color-custom">{{item.nome_instituicao}}</p>
         </div>
-        <hr>
-        <hr>
+
+
+        <p class="sub-title-color-custom">IDIOMAS</p>
         <div *ngFor="let item of curriculum.idiomas">
-          <p>{{item.nome_idioma}}</p>
-          <p>{{item.nivel_conversacao}}</p>
-          <p>{{item.nivel_escrita_leitura}}</p>
+          <p class="text-color-custom">{{item.nome_idioma}}</p>
+          <p class="text-color-custom">{{item.nivel_conversacao}}</p>
+          <p class="text-color-custom">{{item.nivel_escrita_leitura}}</p>
         </div>
-        <hr>
+
       </div>
     </div>
 
   </div>
 </div>
-<br><br><br>
+<br>
+<footer>
+  <p class="text-muted text-center footer-curriculo">© Curriculum Generator - Miguel Castro</p>
+</footer>

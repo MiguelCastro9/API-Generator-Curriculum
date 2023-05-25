@@ -1,5 +1,5 @@
 .vertical-line {
-  border-right: 3px solid black;
+  border-right: 3px solid #E5E5E5;
 }
 
 @media (max-width: 767px) {
@@ -9,19 +9,13 @@
 }
 
 .curriculo {
-  border: 2px solid black;
-  box-shadow: 2px 2px 2px;
+  border: solid black;
+  box-shadow: 4px 4px 4px;
   padding: 10px;
 }
 
-.links-contato {
-  border: 2px solid black;
-  border-radius: 2px;
-  padding: 10px;
-}
-
-.experiencias-profissionais {
-  border: 2px solid black;
+.modal-color-custom {
+  border: solid #E5E5E5;
   border-radius: 2px;
   padding: 10px;
 }
@@ -31,13 +25,7 @@
 }
 
 .conhecimentos {
-  border: 2px solid black;
-  border-radius: 2px;
-  padding: 10px;
-}
-
-.formacoes-academicas {
-  border: 2px solid black;
+  border: solid #E5E5E5;
   border-radius: 2px;
   padding: 10px;
 }
@@ -54,4 +42,21 @@
 
 .button-adiciona-idiomas {
   margin-bottom: 20px;
+}
+
+.footer-curriculo {
+  font-size: 12px;
+}
+
+.title-color-custom {
+  font-size: 30px;
+}
+
+.sub-title-color-custom {
+  font-size: 20px;
+  color: #4A86E8;
+}
+
+.text-color-custom {
+  color: gray;
 }

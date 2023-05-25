@@ -7,8 +7,6 @@ import { Curriculum } from './model/curriculum';
   styleUrls: ['./app.component.css']
 })
 
-  //QUANDO FOR REALIZAR A REQUISAO AI PASSA (this.curriculum.experiencia_profissional = this.experienciasProfissionais)
-
 export class AppComponent {
   title = 'ui-GeneratorCurriculum';
 
@@ -68,6 +66,10 @@ export class AppComponent {
     this.curriculum.links_contato.push(link);
   }
 
+    adicionarConhecimentos(conhecimento: string) {
+    this.curriculum.conhecimentos.push(conhecimento);
+  }
+
   adicionarProfissao() {
     this.totalProfissao++;
     this.adicionaProfissao.push(this.totalProfissao);
@@ -85,10 +87,6 @@ export class AppComponent {
     this.totalProfissao--;
     this.adicionaProfissao.splice(index, 1);
     this.curriculum.experiencias_profissionais.splice(index, 1);
-  }
-
-  adicionarConhecimentos(conhecimento: string) {
-    this.curriculum.conhecimentos.push(conhecimento);
   }
 
   adicionarFormacao() {
