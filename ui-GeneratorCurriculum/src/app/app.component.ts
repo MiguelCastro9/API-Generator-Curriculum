@@ -62,6 +62,15 @@ export class AppComponent {
 
   }
 
+  anoAtualInputData(): string {
+    const dia = new Date();
+    const ano = dia.getFullYear();
+    const mes = dia.getMonth() + 1;
+    const mesString = mes < 10 ? '0' + mes : mes.toString();
+
+    return `${ano}-${mesString}`;
+  }
+
   adicionarLinksContato(link: string) {
     this.curriculum.links_contato.push(link);
   }
