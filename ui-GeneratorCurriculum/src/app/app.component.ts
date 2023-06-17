@@ -35,8 +35,8 @@ export class AppComponent {
     }],
     idiomas: [{
       nome_idioma: '',
-      nivel_conversacao: '',
-      nivel_escrita_leitura: ''
+      nivel_conversacao: 0,
+      nivel_escrita_leitura: 0
     }]
   };
 
@@ -132,8 +132,8 @@ export class AppComponent {
     this.adicionaIdioma.push(this.totalIdiomas);
     const novoIdioma = {
       nome_idioma: '',
-      nivel_conversacao: '',
-      nivel_escrita_leitura: ''
+      nivel_conversacao: 0,
+      nivel_escrita_leitura: 0
     };
     this.curriculum.idiomas.push(novoIdioma);
   }

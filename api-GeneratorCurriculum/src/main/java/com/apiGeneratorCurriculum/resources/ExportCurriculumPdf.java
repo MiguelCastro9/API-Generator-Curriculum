@@ -184,8 +184,8 @@ public class ExportCurriculumPdf {
             curriculum.getIdiomas().stream()
                     .forEach(e -> {
                         Chunk styleParagrafoIdiomaNome = new Chunk(e.getNome_idioma(), fontParagrafoIdiomaNome);
-                        Chunk styleParagrafoIdiomaNivelConversacao = new Chunk(e.getNivel_conversacao(), fontTexto);
-                        Chunk styleParagrafoIdiomaNivelEscritaLeitura = new Chunk(e.getNivel_escrita_leitura(), fontTexto);
+                        Chunk styleParagrafoIdiomaNivelConversacao = new Chunk(e.getNivel_conversacao().toString(), fontTexto);
+                        Chunk styleParagrafoIdiomaNivelEscritaLeitura = new Chunk(e.getNivel_escrita_leitura().toString(), fontTexto);
                         paragrafoIdioma.add(styleParagrafoIdiomaNome);
                         paragrafoIdioma.add("\n");
                         paragrafoIdioma.add(styleParagrafoIdiomaNivelConversacao);

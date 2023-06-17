@@ -11,7 +11,7 @@ public class Idiomas {
     
     private String nome_idioma;
     
-    private String nivel_conversacao;
+    private Integer nivel_conversacao;
     
-    private String nivel_escrita_leitura;
+    private Integer nivel_escrita_leitura;
 }
