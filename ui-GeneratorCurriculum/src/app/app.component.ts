@@ -75,8 +75,16 @@ export class AppComponent {
     this.curriculum.links_contato.push(link);
   }
 
-    adicionarConhecimentos(conhecimento: string) {
+  removerLinksContato(index: number) {
+    this.curriculum.links_contato.splice(index, 1);
+  }
+
+  adicionarConhecimentos(conhecimento: string) {
     this.curriculum.conhecimentos.push(conhecimento);
+  }
+
+  removerConhecimentos(index: number) {
+    this.curriculum.conhecimentos.splice(index, 1);
   }
 
   adicionarProfissao() {
