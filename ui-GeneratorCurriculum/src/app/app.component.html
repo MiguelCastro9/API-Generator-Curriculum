@@ -139,8 +139,8 @@
                     </div>
                     <div class="modal-body">
                        <div class="d-flex justify-content-between align-items-center">
-                          <p>Quais são suas experiências profissionais ?</p>
-                          <button *ngIf="totalProfissao < 10" class="btn btn-outline-primary button-adiciona-experiencia-profissional" (click)="adicionarProfissao();">Adicionar ({{curriculum.experiencias_profissionais.length}} de 10)</button>
+                          <p>Quais são suas experiências profissionais?</p>
+                          <button *ngIf="totalProfissao < 10" class="btn btn-outline-primary button-adiciona-experiencia-profissional" (click)="adicionarProfissao($event);">Adicionar ({{curriculum.experiencias_profissionais.length}} de 10)</button>
                           <button *ngIf="totalProfissao >= 10" class="btn btn-outline-primary button-adiciona-experiencia-profissional" disabled>Adicionar ({{totalProfissao}} de 10)</button>
                        </div>
                        <div *ngIf="curriculum.experiencias_profissionais.length > 0">
@@ -151,36 +151,36 @@
                                    <div class="col-md-6">
                                       <div class="form-group">
                                          <br>
-                                         <label for="empresa">* Qual o nome da empresa ?</label>
-                                         <input type="text" id="empresa" name="empresa" [(ngModel)]="item.nome_empresa" class="form-control">
-                                         <small id="empresa" class="form-text text-muted">Ex.: Google, Microsoft...</small>
+                                         <label for="empresa{{i}}">* Qual o nome da empresa?</label>
+                                         <input type="text" id="empresa{{i}}" name="empresa{{i}}" [(ngModel)]="item.nome_empresa" class="form-control">
+                                         <small id="empresa{{i}}" class="form-text text-muted">Ex.: Google, Microsoft...</small>
                                       </div>
                                    </div>
                                    <div class="col-md-6">
                                       <div class="form-group">
                                          <br>
-                                         <label for="cargo">Qual o cargo ?</label>
-                                         <input type="text" id="cargo" name="cargo" [(ngModel)]="item.cargo" class="form-control">
-                                         <small id="cargo" class="form-text text-muted">Ex.: Desenvolvedor...</small>
+                                         <label for="cargo{{i}}">Qual o cargo?</label>
+                                         <input type="text" id="cargo{{i}}" name="cargo{{i}}" [(ngModel)]="item.cargo" class="form-control">
+                                         <small id="cargo{{i}}" class="form-text text-muted">Ex.: Desenvolvedor...</small>
                                       </div>
                                    </div>
                                    <div class="col-md-6">
                                       <div class="form-group">
-                                         <label for="dataInicio">Qual a data de início ?</label>
-                                         <input type="month" min="1990-01" max="{{anoAtualInputData()}}" id="dataInicio" name="dataIncio" [(ngModel)]="item.data_inicio" class="form-control">
+                                         <label for="dataInicio{{i}}">Qual a data de início?</label>
+                                         <input type="month" min="1990-01" max="{{anoAtualInputData()}}" id="dataInicio{{i}}" name="dataIncio{{i}}" [(ngModel)]="item.data_inicio" class="form-control">
                                       </div>
                                    </div>
                                    <div class="col-md-6">
                                       <div class="form-group">
-                                         <label for="dataFim">Qual a data fim ?</label>
-                                         <input type="month" min="1990-01" max="{{anoAtualInputData()}}" id="dataFim" name="dataFim" [(ngModel)]="item.data_fim" class="form-control">
+                                         <label for="dataFim{{i}}">Qual a data fim?</label>
+                                         <input type="month" min="1990-01" max="{{anoAtualInputData()}}" id="dataFim{{i}}" name="dataFim{{i}}" [(ngModel)]="item.data_fim" class="form-control">
                                       </div>
                                    </div>
                                    <div class="col-md-12">
                                       <div class="form-group">
-                                         <label for="cargoAtual">Descrição das atividades ?</label>
-                                         <input type="text" id="cargoAtual" name="cargoAtual" [(ngModel)]="item.descricao_cargo" class="form-control">
-                                         <small id="cargoAtual" class="form-text text-muted">Ex.: Gerenciamento de projetos...</small>
+                                         <label for="cargoAtual{{i}}">Descrição das atividades?</label>
+                                         <input type="text" id="cargoAtual{{i}}" name="cargoAtual{{i}}" [(ngModel)]="item.descricao_cargo" class="form-control">
+                                         <small id="cargoAtual{{i}}" class="form-text text-muted">Ex.: Gerenciamento de projetos...</small>
                                       </div>
                                    </div>
                                 </div>
@@ -244,8 +244,8 @@
                     </div>
                     <div class="modal-body">
                        <div class="d-flex justify-content-between align-items-center">
-                          <p>Quais são suas formações acadêmicas ?</p>
-                          <button *ngIf="totalFormacao < 10" class="btn btn-outline-primary button-adiciona-formacao-academica" (click)="adicionarFormacao();">Adicionar ({{curriculum.formacoes_academicas.length}} de 10)</button>
+                          <p>Quais são suas formações acadêmicas?</p>
+                          <button *ngIf="totalFormacao < 10" class="btn btn-outline-primary button-adiciona-formacao-academica" (click)="adicionarFormacao($event);">Adicionar ({{curriculum.formacoes_academicas.length}} de 10)</button>
                           <button *ngIf="totalFormacao >= 10" class="btn btn-outline-primary button-adiciona-formacao-academica" disabled>Adicionar ({{totalFormacao}} de 10)</button>
                        </div>
                        <div *ngIf="curriculum.formacoes_academicas.length > 0">
@@ -256,28 +256,28 @@
                                    <div class="col-md-12">
                                       <div class="form-group">
                                          <br>
-                                         <label for="empresa">* Qual o nome do curso ?</label>
-                                         <input type="text" id="curso" name="curso" [(ngModel)]="item.nome_curso" class="form-control">
-                                         <small id="curso" class="form-text text-muted">Ex.: Desenvolvimento, Banco de dados...</small>
+                                         <label for="curso{{i}}">* Qual o nome do curso?</label>
+                                         <input type="text" id="curso{{i}}" name="curso{{i}}" [(ngModel)]="item.nome_curso" class="form-control">
+                                         <small id="curso{{i}}" class="form-text text-muted">Ex.: Desenvolvimento, Banco de dados...</small>
                                       </div>
                                    </div>
                                    <div class="col-md-6">
                                       <div class="form-group">
-                                         <label for="dataInicio">Qual a data de início ?</label>
-                                         <input type="month" min="1990-01" max="{{anoAtualInputData()}}" id="dataInicio" name="dataIncio" [(ngModel)]="item.data_inicio" class="form-control">
+                                         <label for="dataInicio{{i}}">Qual a data de início?</label>
+                                         <input type="month" min="1990-01" max="{{anoAtualInputData()}}" id="dataInicio{{i}}" name="dataInicio{{i}}" [(ngModel)]="item.data_inicio" class="form-control">
                                       </div>
                                    </div>
                                    <div class="col-md-6">
                                       <div class="form-group">
-                                         <label for="dataFim">Qual a data fim ?</label>
-                                         <input type="month" min="1990-01" max="{{anoAtualInputData()}}" id="dataFim" name="dataFim" [(ngModel)]="item.data_fim" class="form-control">
+                                         <label for="dataFim{{i}}">Qual a data fim?</label>
+                                         <input type="month" min="1990-01" max="{{anoAtualInputData()}}" id="dataFim{{i}}" name="dataFim{{i}}" [(ngModel)]="item.data_fim" class="form-control">
                                       </div>
                                    </div>
                                    <div class="col-md-12">
                                       <div class="form-group">
-                                         <label for="instituicao">Nome da instituição ?</label>
-                                         <input type="text" id="instituicao" name="instituicao" [(ngModel)]="item.nome_instituicao" class="form-control">
-                                         <small id="instituicao" class="form-text text-muted">Ex.: Senac...</small>
+                                         <label for="instituicao{{i}}">Nome da instituição?</label>
+                                         <input type="text" id="instituicao{{i}}" name="instituicao{{i}}" [(ngModel)]="item.nome_instituicao" class="form-control">
+                                         <small id="instituicao{{i}}" class="form-text text-muted">Ex.: Senac...</small>
                                       </div>
                                    </div>
                                 </div>
@@ -305,8 +305,8 @@
                     </div>
                     <div class="modal-body">
                        <div class="d-flex justify-content-between align-items-center">
-                          <p>Quais são seus idiomas ?</p>
-                          <button *ngIf="totalIdiomas < 10" class="btn btn-outline-primary button-adiciona-idiomas" (click)="adicionarIdioma();">Adicionar ({{curriculum.idiomas.length}} de 10)</button>
+                          <p>Quais são seus idiomas?</p>
+                          <button *ngIf="totalIdiomas < 10" class="btn btn-outline-primary button-adiciona-idiomas" (click)="adicionarIdioma($event);">Adicionar ({{curriculum.idiomas.length}} de 10)</button>
                           <button *ngIf="totalIdiomas >= 10" class="btn btn-outline-primary button-adiciona-idiomas" disabled>Adicionar ({{totalIdiomas}} de 10)</button>
                        </div>
                        <div *ngIf="curriculum.idiomas.length > 0">
@@ -317,23 +317,23 @@
                                    <div class="col-md-12">
                                       <div class="form-group">
                                          <br>
-                                         <label for="empresa">* Qual o nome do idioma ?</label>
-                                         <input type="text" id="idioma" name="idioma" [(ngModel)]="item.nome_idioma" class="form-control">
-                                         <small id="idioma" class="form-text text-muted">Ex.: Inglês, Espanhol...</small>
+                                         <label for="idioma{{i}}">* Qual o nome do idioma?</label>
+                                         <input type="text" id="idioma{{i}}" name="idioma{{i}}" [(ngModel)]="item.nome_idioma" class="form-control">
+                                         <small id="idioma{{i}}" class="form-text text-muted">Ex.: Inglês, Espanhol...</small>
                                       </div>
                                    </div>
                                    <div class="col-md-6">
                                       <div class="form-group">
-                                         <label for="nivelConversacao">Nível de conversação ?</label>
-                                         <input type="text" id="nivelConversacao" name="nivelConversacao" [(ngModel)]="item.nivel_conversacao" class="form-control">
-                                         <small id="nivelConversacao" class="form-text text-muted">Ex.: Bom...</small>
+                                         <label for="nivelConversacao{{i}}">Nível de conversação?</label>
+                                         <input type="text" id="nivelConversacao{{i}}" name="nivelConversacao{{i}}" [(ngModel)]="item.nivel_conversacao" class="form-control">
+                                         <small id="nivelConversacao{{i}}" class="form-text text-muted">Ex.: Bom...</small>
                                       </div>
                                    </div>
                                    <div class="col-md-6">
                                       <div class="form-group">
-                                         <label for="nivelEscritaLeitura">Nível de escrita/leitura ?</label>
-                                         <input type="text" id="nivelEscritaLeitura" name="nivelEscritaLeitura" [(ngModel)]="item.nivel_escrita_leitura" class="form-control">
-                                         <small id="nivelEscritaLeitura" class="form-text text-muted">Ex.: Bom...</small>
+                                         <label for="nivelEscritaLeitura{{i}}">Nível de escrita/leitura?</label>
+                                         <input type="text" id="nivelEscritaLeitura{{i}}" name="nivelEscritaLeitura{{i}}" [(ngModel)]="item.nivel_escrita_leitura" class="form-control">
+                                         <small id="nivelEscritaLeitura{{i}}" class="form-text text-muted">Ex.: Bom...</small>
                                       </div>
                                    </div>
                                 </div>

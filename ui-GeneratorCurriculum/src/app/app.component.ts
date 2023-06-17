@@ -87,7 +87,8 @@ export class AppComponent {
     this.curriculum.conhecimentos.splice(index, 1);
   }
 
-  adicionarProfissao() {
+  adicionarProfissao(event: Event) {
+    event.preventDefault();
     this.totalProfissao++;
     this.adicionaProfissao.push(this.totalProfissao);
     const novaProfissao = {
@@ -106,7 +107,8 @@ export class AppComponent {
     this.curriculum.experiencias_profissionais.splice(index, 1);
   }
 
-  adicionarFormacao() {
+  adicionarFormacao(event: Event) {
+    event.preventDefault();
     this.totalFormacao++;
     this.adicionaFormacao.push(this.totalFormacao);
     const novaFormacao = {
@@ -124,7 +126,8 @@ export class AppComponent {
     this.curriculum.formacoes_academicas.splice(index, 1);
   }
 
-  adicionarIdioma() {
+  adicionarIdioma(event: Event) {
+    event.preventDefault();
     this.totalIdiomas++;
     this.adicionaIdioma.push(this.totalIdiomas);
     const novoIdioma = {
