@@ -1,6 +1,6 @@
 package com.apiGeneratorCurriculum.resources;
 
-import com.apiGeneratorCurriculum.model.Curriculum;
+import com.apiGeneratorCurriculum.response.CurriculumResponse;
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
@@ -22,7 +22,7 @@ import java.io.IOException;
  */
 public class ExportCurriculumPdf {
 
-    public static ByteArrayInputStream curriculumExportPdf(Curriculum curriculum) throws IOException, BadElementException {
+    public static ByteArrayInputStream curriculumExportPdf(CurriculumResponse curriculum) throws IOException, BadElementException {
 
         ByteArrayOutputStream saida = new ByteArrayOutputStream();
         Document documento = new Document();

@@ -1,8 +1,8 @@
-package com.apiGeneratorCurriculum.model;
+package com.apiGeneratorCurriculum.response;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.List;
 import javax.validation.Valid;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -14,7 +14,8 @@ import org.hibernate.validator.constraints.Length;
  * @author Miguel Castro
  */
 @Data
-public class Curriculum {
+@Schema(name = "Curriculum - response")
+public class CurriculumResponse {
 
     @NotBlank(message = "Nome é obrigatório.")
     @Length(min = 3, max = 40, message = "Nome requer no mínimo {min} e no máximo {max} caracteres.")
@@ -46,7 +47,7 @@ public class Curriculum {
     private String objetivo_profissional;
 
     @Size(max = 10, message = "A lista de experiências deve ter no máximo {max} experiências")
-    private List<ExperienciaProfissional> experiencias_profissionais;
+    private List<ExperienciaProfissionalResponse> experiencias_profissionais;
 
     @NotEmpty(message = "A lista de conhecimentos não pode estar vazia.")
     @Size(min = 1, max = 50, message = "A lista requer no mínimo {min} e no máximo {max} conhecimentos e experiências.")
@@ -54,8 +55,8 @@ public class Curriculum {
 
     @Valid
     @Size(max = 10, message = "A lista de formações deve ter no máximo {max} formações")
-    private List<FormacaoAcademica> formacoes_academicas;
+    private List<FormacaoAcademicaResponse> formacoes_academicas;
 
     @Size(max = 10, message = "A lista de idiomas deve ter no máximo {max} idiomas")
-    private List<Idiomas> idiomas;
+    private List<IdiomasResponse> idiomas;
 }

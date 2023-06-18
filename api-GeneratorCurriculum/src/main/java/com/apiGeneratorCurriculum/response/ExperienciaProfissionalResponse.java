@@ -1,5 +1,6 @@
-package com.apiGeneratorCurriculum.model;
+package com.apiGeneratorCurriculum.response;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
@@ -7,7 +8,8 @@ import lombok.Data;
  * @author Miguel Castro
  */
 @Data
-public class ExperienciaProfissional {
+@Schema(name = "Experiência Profissional - response")
+public class ExperienciaProfissionalResponse {
     
     private String nome_empresa;
     

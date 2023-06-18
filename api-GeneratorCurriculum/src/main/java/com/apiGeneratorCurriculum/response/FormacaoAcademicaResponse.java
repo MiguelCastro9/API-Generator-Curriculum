@@ -1,5 +1,6 @@
-package com.apiGeneratorCurriculum.model;
+package com.apiGeneratorCurriculum.response;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import lombok.Data;
@@ -10,7 +11,8 @@ import org.hibernate.validator.constraints.Length;
  * @author Miguel Castro
  */
 @Data
-public class FormacaoAcademica {
+@Schema(name = "Formação Acadêmica - response")
+public class FormacaoAcademicaResponse {
     
     @NotBlank(message = "Nome do curso é obrigatório.")
     @Length(min = 10, max = 60, message = "Nome do curso requer no mínimo {min} e no máximo {max} caracteres.")

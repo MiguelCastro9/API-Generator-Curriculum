@@ -1,8 +1,9 @@
 package com.apiGeneratorCurriculum.controller;
 
-import com.apiGeneratorCurriculum.model.Curriculum;
+import com.apiGeneratorCurriculum.response.CurriculumResponse;
 import com.apiGeneratorCurriculum.resources.ExportCurriculumPdf;
 import com.itextpdf.text.BadElementException;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import javax.servlet.http.HttpServletResponse;
@@ -23,10 +24,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/curriculum")
 @CrossOrigin(origins = "*")
+@Tag(name = "Curriculum")
 public class CurriculumController {
 
     @PostMapping("/exportPdf")
-    public ResponseEntity<InputStreamResource> exportPdf(@Valid @RequestBody Curriculum curriculum, HttpServletResponse response) throws IOException, BadElementException {
+    public ResponseEntity<InputStreamResource> exportPdf(@Valid @RequestBody CurriculumResponse curriculum, HttpServletResponse response) throws IOException, BadElementException {
         response.setContentType("application/octet-stream");
         response.setHeader("Content-Disposition", "attachment; filename=curriculum.pdf");
         ByteArrayInputStream bais = ExportCurriculumPdf.curriculumExportPdf(curriculum);
