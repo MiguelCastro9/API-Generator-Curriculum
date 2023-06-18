@@ -118,6 +118,9 @@ public class ExportCurriculumPdf {
             curriculum.getExperiencias_profissionais().stream()
                     .forEach(e -> {
                         Chunk styleParagrafoExperienciaProfissionalEmpresa = new Chunk(e.getNome_empresa(), fontParagrafoExperienciaProfissionalEmpresa);
+                        if (e.getData_fim() == null) {
+                            e.setData_fim("Atualmente");
+                        }
                         Chunk styleParagrafoExperienciaProfissionalCargoDataInicioFim = new Chunk(e.getCargo() + " " + e.getData_inicio() + " - " + e.getData_fim(), fontParagrafoExperienciaProfissionalCargo);
                         Chunk styleParagrafoExperienciaProfissionalDescricao = new Chunk(e.getDescricao_cargo(), fontTexto);
                         paragrafoExperienciaProfissional.add(styleParagrafoExperienciaProfissionalEmpresa);
@@ -155,6 +158,9 @@ public class ExportCurriculumPdf {
             Paragraph paragrafoFormacaoAcademica = new Paragraph();
             curriculum.getFormacoes_academicas().stream()
                     .forEach(e -> {
+                        if (e.getData_fim() == null) {
+                            e.setData_fim("Atualmente");
+                        }
                         Chunk styleParagrafoFormacaoAcademicaCursoDataInicioFim = new Chunk(e.getNome_curso() + " " + e.getData_inicio() + " - " + e.getData_fim(), fontTexto);
                         Chunk styleParagrafoFormacaoAcademicaInstituicao = new Chunk(e.getNome_instituicao(), fontTexto);
                         paragrafoFormacaoAcademica.add(styleParagrafoFormacaoAcademicaCursoDataInicioFim);
