@@ -184,8 +184,8 @@ public class ExportCurriculumPdf {
             curriculum.getIdiomas().stream()
                     .forEach(e -> {
                         Chunk styleParagrafoIdiomaNome = new Chunk(e.getNome_idioma(), fontParagrafoIdiomaNome);
-                        Chunk styleParagrafoIdiomaNivelConversacao = new Chunk(e.getNivel_conversacao().toString(), fontTexto);
-                        Chunk styleParagrafoIdiomaNivelEscritaLeitura = new Chunk(e.getNivel_escrita_leitura().toString(), fontTexto);
+                        Chunk styleParagrafoIdiomaNivelConversacao = new Chunk("Conversação: " + e.getNivel_conversacao().toString() + "%", fontTexto);
+                        Chunk styleParagrafoIdiomaNivelEscritaLeitura = new Chunk("Escrita/Leitura: " + e.getNivel_escrita_leitura().toString() + "%", fontTexto);
                         paragrafoIdioma.add(styleParagrafoIdiomaNome);
                         paragrafoIdioma.add("\n");
                         paragrafoIdioma.add(styleParagrafoIdiomaNivelConversacao);
@@ -202,7 +202,7 @@ public class ExportCurriculumPdf {
             paragrafoCopyright.setAlignment(Element.ALIGN_CENTER);
             Font fontparagrafoCopyright = new Font(Font.FontFamily.HELVETICA, 10);
             fontparagrafoCopyright.setColor(BaseColor.GRAY);
-            Chunk styleparagrafoCopyriht = new Chunk("© Curriculum Generator - Miguel Castro", fontparagrafoCopyright);
+            Chunk styleparagrafoCopyriht = new Chunk("© Generator Curriculum - Miguel Castro", fontparagrafoCopyright);
             paragrafoCopyright.add(styleparagrafoCopyriht);
             documento.add(paragrafoCopyright);
             documento.close();

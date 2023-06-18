@@ -608,6 +608,8 @@
         <h5>Currículo:</h5>
         <br>
         <div class="curriculo">
+          <div class="barra-color"></div>
+          <br>
            <p class="title-color-custom">{{curriculum.nome_completo}}</p>
            <p class="sub-title-color-custom">{{curriculum.cargo_atual}}</p>
            <p class="text-color-custom">{{curriculum.estado}} <span *ngIf="curriculum.pais != ''"> - {{curriculum.pais}}</span></p>
@@ -639,6 +641,7 @@
               <p class="text-color-custom" *ngIf="item.nivel_conversacao != null">conversação: {{item.nivel_conversacao}}</p>
               <p class="text-color-custom"  *ngIf="item.nivel_escrita_leitura != null">leitura/escrita: {{item.nivel_escrita_leitura}}</p>
            </div>
+           <div class="barra-color"></div>
         </div>
      </div>
   </div>
