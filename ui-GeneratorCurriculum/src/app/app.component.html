@@ -6,7 +6,7 @@
   <div class="row">
      <div class="col-md-6 vertical-line">
         <h5>Formulário:</h5>
-        <br>
+       <br>
         <form>
            <div class="row">
               <div class="col-md-6">
@@ -22,7 +22,7 @@
                  </div>
                  <div class="form-group">
                     <label for="numero_contato">* Qual seu número de contato ?</label>
-                    <input type="text" id="numero_contato" name="numero_contato" [(ngModel)]="curriculum.numero_contato" mask="(00) 00000-0000" maxlength="15" class="form-control" tabindex="5">
+                    <input type="text" id="numero_contato" name="numero_contato" [(ngModel)]="curriculum.numero_contato" mask="(00) 00000-0000" minlength="15" maxlength="15" class="form-control" tabindex="5">
                     <small id="numero_contato" class="form-text text-muted">Ex.: (11) 91234-5678...</small>
                  </div>
               </div>
@@ -342,6 +342,9 @@
            </div>
            <br>
            <hr>
+           <div *ngIf="alertMensagem" class="alert alert-danger" role="alert">
+            <span>{{alertMensagem}}</span>
+           </div>
            <button class="btn btn-outline-success btn-block" (click)="exportPdf(curriculum);">Gerar currículo</button>
            <hr>
            <!-- Modal - links de contato -->

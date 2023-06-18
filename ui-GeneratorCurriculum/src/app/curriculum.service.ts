@@ -15,5 +15,4 @@ export class CurriculumService {
   exportPdf(curriculum: Curriculum) {
     return this.http.post(this.api_url + '/curriculum/exportPdf', curriculum, { responseType: 'blob' });
   }
-
 }

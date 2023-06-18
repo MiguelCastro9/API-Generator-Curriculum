@@ -52,6 +52,7 @@ export class AppComponent {
   idiomas: any[] = [];
   adicionaIdioma: number[] = [];
   totalIdiomas!: number;
+  alertMensagem = '';
 
   constructor(private curriculumService: CurriculumService) { }
 
@@ -145,7 +146,121 @@ export class AppComponent {
     this.curriculum.idiomas.splice(index, 1);
   }
 
+  validarFormulario() {
+    if (!this.curriculum.nome_completo) {
+      this.alertMensagem = 'Campo nome é obrigatório.';
+      return false;
+    }
+    if (!this.curriculum.estado) {
+      this.alertMensagem = 'Campo estado é obrigatório.';
+      return false;
+    }
+    if (!this.curriculum.pais) {
+      this.alertMensagem = 'Campo país é obrigatório.';
+      return false;
+    }
+    if (!this.curriculum.numero_contato) {
+      this.alertMensagem = 'Campo número de contato é obrigatório.';
+      return false;
+    }
+    if (this.curriculum.numero_contato.length < 15) {
+      this.alertMensagem = 'Campo número de contato inválido.';
+      return false;
+    }
+    if (!this.curriculum.email_contato) {
+      this.alertMensagem = 'Campo e-mail é obrigatório.';
+      return false;
+    }
+    if (!this.curriculum.objetivo_profissional) {
+      this.alertMensagem = 'Campo objetivo profissional é obrigatório.';
+      return false;
+    }
+    if (this.curriculum.links_contato.length == 0) {
+      this.alertMensagem = 'Campo link de contato é obrigatório.';
+      return false;
+    }
+    if (this.curriculum.experiencias_profissionais.length === 0) {
+      this.alertMensagem = 'Pelo menos uma experiência profissional é obrigatória.';
+      return false;
+    }
+    for (let i = 0; i < this.curriculum.experiencias_profissionais.length; i++) {
+      const experiencia = this.curriculum.experiencias_profissionais[i];
+
+      if (!experiencia.nome_empresa) {
+        this.alertMensagem = `Campo nome da empresa (${i + 1}) é obrigatório.`;
+        return false;
+      }
+
+      if (!experiencia.cargo) {
+        this.alertMensagem = `Campo cargo (${i + 1}) é obrigatório.`;
+        return false;
+      }
+
+      if (!experiencia.data_inicio) {
+        this.alertMensagem = `Campo data início (${i + 1}) é obrigatório.`;
+        return false;
+      }
+
+      if (!experiencia.descricao_cargo) {
+        this.alertMensagem = `Campo descrição de atividades (${i + 1}) é obrigatório.`;
+        return false;
+      }
+    }
+    if (this.curriculum.conhecimentos.length == 0) {
+      this.alertMensagem = 'Campo conhecimentos é obrigatório.';
+      return false;
+    }
+    if (this.curriculum.formacoes_academicas.length === 0) {
+      this.alertMensagem = 'Pelo menos uma formação acadêmica é obrigatória.';
+      return false;
+    }
+    for (let i = 0; i < this.curriculum.formacoes_academicas.length; i++) {
+      const formacao = this.curriculum.formacoes_academicas[i];
+
+      if (!formacao.nome_curso) {
+        this.alertMensagem = `Campo nome do curso (${i + 1}) é obrigatório.`;
+        return false;
+      }
+
+      if (!formacao.data_inicio) {
+        this.alertMensagem = `Campo data início (${i + 1}) é obrigatório.`;
+        return false;
+      }
+
+      if (!formacao.nome_instituicao) {
+        this.alertMensagem = `Campo nome da instituição (${i + 1}) é obrigatório.`;
+        return false;
+      }
+    }
+    if (this.curriculum.idiomas.length === 0) {
+      this.alertMensagem = 'Pelo menos um idioma é obrigatório.';
+      return false;
+    }
+    for (let i = 0; i < this.curriculum.idiomas.length; i++) {
+      const idioma = this.curriculum.idiomas[i];
+
+      if (!idioma.nome_idioma) {
+        this.alertMensagem = `Campo nome do idioma (${i + 1}) é obrigatório.`;
+        return false;
+      }
+
+      if (!idioma.nivel_conversacao) {
+        this.alertMensagem = `Campo nível de conversação (${i + 1}) é obrigatório.`;
+        return false;
+      }
+
+      if (!idioma.nivel_escrita_leitura) {
+        this.alertMensagem = `Campo nível de escrita/leitura (${i + 1}) é obrigatório.`;
+        return false;
+      }
+    }
+    return true;
+  }
+
   exportPdf(curriculum: Curriculum) {
+    if (!this.validarFormulario()) {
+      return;
+    }
     this.curriculumService.exportPdf(curriculum).subscribe(blob => {
       const downloadLink = document.createElement('a');
       const url = URL.createObjectURL(blob);
