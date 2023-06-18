@@ -15,7 +15,6 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.LineSeparator;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 
 /**
  *
@@ -116,13 +115,10 @@ public class ExportCurriculumPdf {
             fontParagrafoExperienciaProfissionalEmpresa.setColor(BaseColor.BLACK);
             Font fontParagrafoExperienciaProfissionalCargo = new Font(Font.FontFamily.HELVETICA, 13, Font.BOLD);
             fontParagrafoExperienciaProfissionalCargo.setColor(BaseColor.GRAY);
-            SimpleDateFormat dateFormatExperienciaProfissional = new SimpleDateFormat("MMM/yyyy");
             curriculum.getExperiencias_profissionais().stream()
                     .forEach(e -> {
                         Chunk styleParagrafoExperienciaProfissionalEmpresa = new Chunk(e.getNome_empresa(), fontParagrafoExperienciaProfissionalEmpresa);
-                        String dataInicioFormatada = dateFormatExperienciaProfissional.format(e.getData_inicio());
-                        String dataFimFormatada = dateFormatExperienciaProfissional.format(e.getData_fim());
-                        Chunk styleParagrafoExperienciaProfissionalCargoDataInicioFim = new Chunk(e.getCargo() + " " + dataInicioFormatada + " - " + dataFimFormatada, fontParagrafoExperienciaProfissionalCargo);
+                        Chunk styleParagrafoExperienciaProfissionalCargoDataInicioFim = new Chunk(e.getCargo() + " " + e.getData_inicio() + " - " + e.getData_fim(), fontParagrafoExperienciaProfissionalCargo);
                         Chunk styleParagrafoExperienciaProfissionalDescricao = new Chunk(e.getDescricao_cargo(), fontTexto);
                         paragrafoExperienciaProfissional.add(styleParagrafoExperienciaProfissionalEmpresa);
                         paragrafoExperienciaProfissional.add("\n");
@@ -157,12 +153,9 @@ public class ExportCurriculumPdf {
             documento.add(paragrafoTituloFormacaoAcademica);
 
             Paragraph paragrafoFormacaoAcademica = new Paragraph();
-            SimpleDateFormat dateFormatFormcacaoAcademica = new SimpleDateFormat("yyyy");
             curriculum.getFormacoes_academicas().stream()
                     .forEach(e -> {
-                        String dataInicioFormatada = dateFormatFormcacaoAcademica.format(e.getData_inicio());
-                        String dataFimFormatada = dateFormatFormcacaoAcademica.format(e.getData_fim());
-                        Chunk styleParagrafoFormacaoAcademicaCursoDataInicioFim = new Chunk(e.getNome_curso() + " " + dataInicioFormatada + " - " + dataFimFormatada, fontTexto);
+                        Chunk styleParagrafoFormacaoAcademicaCursoDataInicioFim = new Chunk(e.getNome_curso() + " " + e.getData_inicio() + " - " + e.getData_fim(), fontTexto);
                         Chunk styleParagrafoFormacaoAcademicaInstituicao = new Chunk(e.getNome_instituicao(), fontTexto);
                         paragrafoFormacaoAcademica.add(styleParagrafoFormacaoAcademicaCursoDataInicioFim);
                         paragrafoFormacaoAcademica.add("\n");

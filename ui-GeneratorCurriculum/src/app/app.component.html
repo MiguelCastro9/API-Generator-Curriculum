@@ -340,6 +340,10 @@
                  </button>
               </div>
            </div>
+           <br>
+           <hr>
+           <button class="btn btn-outline-success btn-block" (click)="exportPdf(curriculum);">Gerar currículo</button>
+           <hr>
            <!-- Modal - links de contato -->
            <div class="modal fade" id="linkModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="linkLabel" aria-hidden="true">
               <div class="modal-dialog">
@@ -363,7 +367,7 @@
                           <div *ngIf="curriculum.links_contato.length > 0" class="modal-color-custom">
                              <p *ngFor="let item of curriculum.links_contato; let i = index">
                                 • {{item}}
-                                <span aria-hidden="true" style="cursor: pointer; color: red;" (click)="removerLinksContato(i);">
+                                <span aria-hidden="true" class="remove-item-list" (click)="removerLinksContato(i);">
                                 <strong>&times;</strong>
                                 </span>
                              </p>
@@ -468,7 +472,7 @@
                           <div *ngIf="curriculum.conhecimentos.length > 0" class="modal-color-custom">
                              <p *ngFor="let item of curriculum.conhecimentos; let i = index">
                                 • {{item}}
-                                <span aria-hidden="true" style="cursor: pointer; color: red;" (click)="removerConhecimentos(i);">
+                                <span aria-hidden="true" class="remove-item-list" (click)="removerConhecimentos(i);">
                                 <strong>&times;</strong>
                                 </span>
                              </p>
@@ -601,7 +605,6 @@
                  </div>
               </div>
            </div>
-           <br>
         </form>
      </div>
      <div class="col-md-6">

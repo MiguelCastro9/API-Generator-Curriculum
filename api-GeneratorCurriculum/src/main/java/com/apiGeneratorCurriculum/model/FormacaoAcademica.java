@@ -1,6 +1,5 @@
 package com.apiGeneratorCurriculum.model;
 
-import java.util.Date;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import lombok.Data;
@@ -18,9 +17,9 @@ public class FormacaoAcademica {
     private String nome_curso;
     
     @NotNull(message = "Data início é obrigatório.")
-    private Date data_inicio;
+    private String data_inicio;
     
-    private Date data_fim;
+    private String data_fim;
     
     @NotBlank(message = "Nome da instituição é obrigatório.")
     @Length(min = 5, max = 60, message = "Nome da instituição requer no mínimo {min} e no máximo {max} caracteres.")

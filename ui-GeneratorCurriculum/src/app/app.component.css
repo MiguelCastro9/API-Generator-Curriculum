@@ -61,6 +61,11 @@
   color: gray;
 }
 
+.remove-item-list {
+  cursor: pointer;
+  color: red;
+}
+
 .barra-color {
   background-color: #4A86E8;
   color: #4A86E8;

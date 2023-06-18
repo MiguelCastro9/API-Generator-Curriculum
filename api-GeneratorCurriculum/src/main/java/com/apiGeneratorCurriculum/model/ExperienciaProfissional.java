@@ -1,6 +1,5 @@
 package com.apiGeneratorCurriculum.model;
 
-import java.util.Date;
 import lombok.Data;
 
 /**
@@ -14,9 +13,9 @@ public class ExperienciaProfissional {
     
     private String cargo;
     
-    private Date data_inicio;
+    private String data_inicio;
     
-    private Date data_fim;
+    private String data_fim;
     
     private String descricao_cargo;
 }

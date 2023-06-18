@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Curriculum } from './model/curriculum';
+import { CurriculumService } from './curriculum.service';
 
 @Component({
   selector: 'app-root',
@@ -52,7 +53,7 @@ export class AppComponent {
   adicionaIdioma: number[] = [];
   totalIdiomas!: number;
 
-  constructor() { }
+  constructor(private curriculumService: CurriculumService) { }
 
   ngOnInit(): void {
 
@@ -142,6 +143,17 @@ export class AppComponent {
     this.totalIdiomas--;
     this.adicionaIdioma.splice(index, 1);
     this.curriculum.idiomas.splice(index, 1);
+  }
+
+  exportPdf(curriculum: Curriculum) {
+    this.curriculumService.exportPdf(curriculum).subscribe(blob => {
+      const downloadLink = document.createElement('a');
+      const url = URL.createObjectURL(blob);
+      downloadLink.href = url;
+      downloadLink.download = 'curriculum.pdf';
+      downloadLink.click();
+      URL.revokeObjectURL(url);
+    });
   }
 }
 
